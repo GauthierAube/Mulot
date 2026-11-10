@@ -1,0 +1,28 @@
+MULOT — réglages pour la souris Logitech MX Master 3S (Bluetooth)
+===================================================================
+
+INSTALLER
+1. Glisse Mulot dans le dossier Applications (juste à côté).
+2. Ouvre Mulot depuis le dossier Applications.
+
+   macOS va dire que Mulot « ne peut pas être ouverte » : c'est normal,
+   l'app n'est pas vendue sur l'App Store. Pour l'autoriser une fois :
+   Réglages Système › Confidentialité et sécurité, tout en bas,
+   bouton « Ouvrir quand même » à côté de Mulot. Puis rouvre Mulot.
+
+3. Mulot demande deux autorisations, à cocher dans
+   Réglages Système › Confidentialité et sécurité :
+   - Surveillance de la saisie : pour lire le bouton de pouce de la souris ;
+   - Accessibilité : pour changer de bureau, ouvrir Mission Control, etc.
+   Après les avoir cochées, quitte Mulot et rouvre-la.
+
+UTILISER
+- Mulot vit dans la barre des menus, en haut à droite (icône de souris).
+  Si elle n'y est pas (encoche du MacBook, trop d'icônes), ouvre
+  simplement Mulot depuis le dossier Applications : les réglages
+  s'affichent au milieu de l'écran.
+- Clique sur une ligne pour choisir ce que fait chaque bouton.
+- Pense à quitter Logi Options+ s'il est installé : les deux se gênent.
+
+Souris : MX Master 3S en Bluetooth (pas avec le récepteur Logi Bolt).
+macOS 13 ou plus récent, Mac Apple Silicon ou Intel.
