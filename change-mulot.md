@@ -2,6 +2,11 @@
 
 Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour la souris Logitech MX Master 3S en Bluetooth. Elle règle les boutons et les gestes du pouce, sans compte ni logiciel Logitech. Les dernières modifications sont en haut.
 
+## 10 novembre 2026 : préparation open source
+
+- Ajout de la licence MIT et d'une page de présentation (README) en anglais et en français, avec les souris compatibles.
+- Captures de la fenêtre (mode clair et sombre) dans `docs/`, régénérées avec `build/Mulot.app/Contents/MacOS/Mulot --capture docs`.
+
 ## 10 novembre 2026 : menu sur le côté et icône
 
 - Un clic sur une ligne n'agrandit plus la fenêtre : la liste des choix s'ouvre dans un petit menu à droite de la fenêtre (la fenêtre se décale un peu vers la gauche pour lui laisser la place). Le choix en cours est coché en terracotta.

@@ -89,7 +89,8 @@ struct PanelView: View {
         HStack(alignment: .center, spacing: 10) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("Mulot").font(.system(size: 21, weight: .bold, design: .rounded))
-                Text(model.logi.deviceName.map { "\($0) · connectée" } ?? "Souris non détectée")
+                Text(PanelView.captureMode ? "MX Master 3S · connectée"
+                     : model.logi.deviceName.map { "\($0) · connectée" } ?? "Souris non détectée")
                     .font(.system(size: 13)).foregroundStyle(Palette.muted)
             }
             Spacer()
@@ -116,11 +117,13 @@ struct PanelView: View {
     }
 
     @ViewBuilder private var warnings: some View {
+        if PanelView.captureMode { EmptyView() } else {
         if let err = model.logi.lastError { warning(err, action: nil) }
         if !model.tapRunning {
             warning("Autorise Mulot dans Accessibilité") {
                 NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
             }
+        }
         }
     }
 
@@ -209,10 +212,19 @@ struct PanelView: View {
 
     private var footer: some View {
         HStack {
-            Toggle(isOn: Binding(get: { model.launchAtLogin }, set: { _ in model.toggleLogin() })) {
-                Text("Au démarrage").font(.system(size: 12)).fixedSize()
+            if PanelView.captureMode {
+                // L'export en image ne sait pas dessiner l'interrupteur macOS : on en dessine un.
+                HStack(spacing: 8) {
+                    Text("Au démarrage").font(.system(size: 12)).fixedSize()
+                    Capsule().fill(Palette.line).frame(width: 26, height: 15)
+                        .overlay(Circle().fill(Color.white).padding(2), alignment: .leading)
+                }
+            } else {
+                Toggle(isOn: Binding(get: { model.launchAtLogin }, set: { _ in model.toggleLogin() })) {
+                    Text("Au démarrage").font(.system(size: 12)).fixedSize()
+                }
+                .toggleStyle(.switch).controlSize(.mini)
             }
-            .toggleStyle(.switch).controlSize(.mini)
             Spacer()
             Button("Reconnecter", action: onReconnect)
             Button("Quitter", action: onQuit).keyboardShortcut("q")
