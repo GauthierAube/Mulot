@@ -23,6 +23,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         _ = IOHIDRequestAccess(kIOHIDRequestTypeListenEvent)
         logi.start()
         ensureAccessibility(prompt: true)
+
+        // Lancée à la main alors que l'icône de la barre des menus est cachée
+        // (encoche, trop d'icônes, ou masquée par macOS) : on ouvre la fenêtre.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let self, !self.statusItemVisible else { return }
+            appLog("Icône de la barre des menus invisible : fenêtre ouverte au centre")
+            self.panel.showCentered()
+        }
+    }
+
+    /// Double-clic sur Mulot alors qu'elle tourne déjà : on ouvre les réglages.
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
+        panel.showCentered()
+        return false
+    }
+
+    private var statusItemVisible: Bool {
+        guard item.isVisible, let win = item.button?.window, win.occlusionState.contains(.visible),
+              let screen = win.screen else { return false }
+        return screen.frame.intersects(win.frame)
     }
 
     func applicationWillTerminate(_ n: Notification) { logi.stop() }

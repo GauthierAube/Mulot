@@ -338,7 +338,21 @@ final class PanelController {
         var x = b.midX - size.width / 2
         // Garde ~250 pt à droite pour le menu des choix, qui s'ouvre de ce côté.
         x = min(max(x, screen.minX + 8), screen.maxX - size.width - 258)
-        panel.setFrame(NSRect(x: x, y: b.minY - size.height - 6, width: size.width, height: size.height), display: true)
+        show(NSRect(x: x, y: b.minY - size.height - 6, width: size.width, height: size.height))
+    }
+
+    /// Ouvre la fenêtre en haut au centre de l'écran (icône de la barre des menus cachée).
+    func showCentered() {
+        if panel.isVisible { panel.makeKeyAndOrderFront(nil); return }
+        model.refresh()
+        let size = host.fittingSize
+        let screen = (NSScreen.screens.first { NSMouseInRect(NSEvent.mouseLocation, $0.frame, false) } ?? NSScreen.main!).visibleFrame
+        show(NSRect(x: screen.midX - size.width / 2 - 125, y: screen.maxY - size.height - 40,
+                    width: size.width, height: size.height))
+    }
+
+    private func show(_ frame: NSRect) {
+        panel.setFrame(frame, display: true)
         NSApp.activate(ignoringOtherApps: true)
         panel.makeKeyAndOrderFront(nil)
         outsideMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { [weak self] _ in

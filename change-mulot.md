@@ -2,6 +2,12 @@
 
 Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour la souris Logitech MX Master 3S en Bluetooth. Elle règle les boutons et les gestes du pouce, sans compte ni logiciel Logitech. Les dernières modifications sont en haut.
 
+## 10 novembre 2026 (soir) : icône et réglages toujours accessibles
+
+- Mulot a maintenant sa propre icône : une souris crème sur fond terracotta, tirée du dessin de la MX Master, avec la molette et le bouton de pouce. Elle se régénère avec `python3 tools/make-icon.py`.
+- Si l'icône de la barre des menus est cachée (encoche du MacBook ou masquée par macOS), la fenêtre de réglages s'ouvre d'elle-même au milieu de l'écran.
+- Ouvrir Mulot depuis le Finder ou Spotlight alors qu'elle tourne déjà affiche les réglages.
+
 ## 10 novembre 2026 : préparation open source
 
 - Ajout de la licence MIT et d'une page de présentation (README) en anglais et en français, avec les souris compatibles.
@@ -10,7 +16,6 @@ Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour la 
 ## 10 novembre 2026 : menu sur le côté et icône
 
 - Un clic sur une ligne n'agrandit plus la fenêtre : la liste des choix s'ouvre dans un petit menu à droite de la fenêtre (la fenêtre se décale un peu vers la gauche pour lui laisser la place). Le choix en cours est coché en terracotta.
-- Mulot a maintenant son icône d'app (une souris blanche sur fond terracotta), visible dans Applications et le Finder. Elle se régénère avec `swift tools/make-icon.swift`.
 
 ## 10 novembre 2026 : première version
 
