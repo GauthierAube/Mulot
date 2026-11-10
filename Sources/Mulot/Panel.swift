@@ -60,11 +60,11 @@ struct PanelView: View {
     var onReconnect: () -> Void
     var onQuit: () -> Void
     var onResize: () -> Void = {}
-    @State var expanded: String? = PanelView.captureMode ? Slot.gesteGauche.rawValue : nil
+    @State var expanded: String? = nil
 
     var body: some View {
         let _ = model.tick
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 14) {
             header
             warnings
             section("Bouton de pouce") {
@@ -78,18 +78,17 @@ struct PanelView: View {
             }
             footer
         }
-        .padding(20)
-        .frame(width: 420)
+        .padding(16)
+        .frame(width: 380)
         .background(Palette.bg)
         .foregroundStyle(Palette.fg)
         .tint(Palette.accent)
-        .onChange(of: expanded) { _ in DispatchQueue.main.async { onResize() } }
     }
 
     private var header: some View {
         HStack(alignment: .center, spacing: 10) {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Mulot").font(.system(size: 24, weight: .bold, design: .rounded))
+                Text("Mulot").font(.system(size: 21, weight: .bold, design: .rounded))
                 Text(model.logi.deviceName.map { "\($0) · connectée" } ?? "Souris non détectée")
                     .font(.system(size: 13)).foregroundStyle(Palette.muted)
             }
@@ -141,9 +140,9 @@ struct PanelView: View {
     }
 
     private func section<C: View>(_ title: String, @ViewBuilder _ content: () -> C) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(title.uppercased())
-                .font(.system(size: 11.5, weight: .semibold)).tracking(0.8)
+                .font(.system(size: 11, weight: .semibold)).tracking(0.8)
                 .foregroundStyle(Palette.muted).padding(.leading, 4)
             VStack(spacing: 0) { content() }
                 .background(RoundedRectangle(cornerRadius: 14).fill(Palette.card))
@@ -154,7 +153,7 @@ struct PanelView: View {
 
     private func rows(_ slots: [Slot]) -> some View {
         ForEach(Array(slots.enumerated()), id: \.offset) { i, slot in
-            if i > 0 { Divider().overlay(Palette.line).padding(.leading, 112) }
+            if i > 0 { Divider().overlay(Palette.line).padding(.leading, 86) }
             slotRow(slot)
         }
     }
@@ -175,47 +174,36 @@ struct PanelView: View {
                    choices: ThumbMode.allCases.map { m in (m.label, m == model.thumb, { model.setThumb(m) }) })
     }
 
-    /// Une ligne qui se déplie sur ses choix, présentés en pastilles.
+    /// Une ligne qui ouvre, sur le côté de la fenêtre, un menu de ses choix.
     private func expandable(id: String, image: NSImage, caption: String, value: String,
                             choices: [(String, Bool, () -> Void)]) -> some View {
         let open = expanded == id
-        return VStack(spacing: 0) {
-            Button {
-                withAnimation(.spring(response: 0.38, dampingFraction: 0.86)) { expanded = open ? nil : id }
-            } label: {
-                row(image: image, caption: caption, value: value, open: open)
-            }
-            .buttonStyle(.plain)
-
-            if open {
-                LazyVGrid(columns: [GridItem(.flexible(), spacing: 6), GridItem(.flexible(), spacing: 6)], spacing: 6) {
-                    ForEach(Array(choices.enumerated()), id: \.offset) { i, c in
-                        Pill(title: c.0, selected: c.1, index: i) {
-                            c.2()
-                            withAnimation(.spring(response: 0.38, dampingFraction: 0.86)) { expanded = nil }
-                        }
-                    }
-                }
-                .padding(.horizontal, 14).padding(.bottom, 14).padding(.top, 2)
-                .transition(.opacity.combined(with: .move(edge: .top)))
-            }
+        return Button {
+            expanded = open ? nil : id
+        } label: {
+            row(image: image, caption: caption, value: value, open: open)
         }
-        .clipped()
+        .buttonStyle(.plain)
+        .background(open ? Palette.accentSoft.opacity(0.55) : Color.clear)
+        .popover(isPresented: Binding(get: { expanded == id && !PanelView.captureMode },
+                                      set: { if !$0, expanded == id { expanded = nil } }),
+                 arrowEdge: .trailing) {
+            ChoiceMenu(title: caption, choices: choices) { expanded = nil }
+        }
     }
 
     private func row(image: NSImage, caption: String, value: String, open: Bool) -> some View {
         HStack(spacing: 12) {
-            Image(nsImage: image).resizable().aspectRatio(contentMode: .fit).frame(width: 84, height: 58)
-            VStack(alignment: .leading, spacing: 3) {
-                Text(value).font(.system(size: 16, weight: .semibold)).foregroundStyle(Palette.fg)
-                Text(caption).font(.system(size: 12.5)).foregroundStyle(Palette.muted)
+            Image(nsImage: image).resizable().aspectRatio(contentMode: .fit).frame(width: 62, height: 42)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(value).font(.system(size: 14.5, weight: .semibold)).foregroundStyle(Palette.fg)
+                Text(caption).font(.system(size: 11.5)).foregroundStyle(Palette.muted)
             }
             Spacer()
-            Image(systemName: "chevron.down").font(.system(size: 10, weight: .semibold))
-                .rotationEffect(.degrees(open ? 180 : 0))
+            Image(systemName: "chevron.right").font(.system(size: 10, weight: .semibold))
                 .foregroundStyle(open ? Palette.accent : Palette.muted)
         }
-        .padding(.horizontal, 14).padding(.vertical, 11)
+        .padding(.horizontal, 12).padding(.vertical, 6)
         .contentShape(Rectangle())
     }
 
@@ -233,35 +221,50 @@ struct PanelView: View {
     }
 }
 
-/// Pastille de choix : apparaît en fondu, légèrement décalée, l'une après l'autre.
-struct Pill: View {
+/// Menu latéral : la liste des choix d'une ligne, celui en cours coché.
+struct ChoiceMenu: View {
+    let title: String
+    let choices: [(String, Bool, () -> Void)]
+    let done: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(title.uppercased())
+                .font(.system(size: 10.5, weight: .semibold)).tracking(0.8)
+                .foregroundStyle(Palette.muted)
+                .padding(.horizontal, 10).padding(.top, 4).padding(.bottom, 4)
+            ForEach(Array(choices.enumerated()), id: \.offset) { _, c in
+                ChoiceItem(title: c.0, selected: c.1) { c.2(); done() }
+            }
+        }
+        .padding(8)
+        .frame(width: 230)
+        .background(Palette.bg)
+        .foregroundStyle(Palette.fg)
+    }
+}
+
+struct ChoiceItem: View {
     let title: String
     let selected: Bool
-    let index: Int
     let action: () -> Void
-    @State private var shown = PanelView.captureMode
     @State private var hover = false
 
     var body: some View {
         Button(action: action) {
-            Text(title)
-                .font(.system(size: 12, weight: selected ? .semibold : .regular))
-                .lineLimit(1).minimumScaleFactor(0.85)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 7).padding(.horizontal, 6)
-                .background(Capsule().fill(selected ? Palette.accent : (hover ? Palette.line.opacity(0.6) : Palette.bg)))
-                .overlay(Capsule().stroke(selected ? Color.clear : Palette.line, lineWidth: 1))
-                .foregroundStyle(selected ? Color.white : Palette.fg)
-                .contentShape(Capsule())
+            HStack(spacing: 8) {
+                Text(title).font(.system(size: 13, weight: selected ? .semibold : .regular)).lineLimit(1)
+                Spacer()
+                if selected { Image(systemName: "checkmark").font(.system(size: 11, weight: .bold)) }
+            }
+            .padding(.horizontal, 10).padding(.vertical, 6)
+            .background(RoundedRectangle(cornerRadius: 7).fill(
+                selected ? Palette.accent : (hover ? Palette.line.opacity(0.7) : Color.clear)))
+            .foregroundStyle(selected ? Color.white : Palette.fg)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .onHover { h in withAnimation(.easeOut(duration: 0.12)) { hover = h } }
-        .opacity(shown ? 1 : 0)
-        .offset(y: shown ? 0 : -6)
-        .scaleEffect(shown ? 1 : 0.96)
-        .onAppear {
-            withAnimation(.easeOut(duration: 0.28).delay(0.04 + Double(index) * 0.018)) { shown = true }
-        }
+        .onHover { hover = $0 }
     }
 }
 
@@ -321,7 +324,8 @@ final class PanelController {
         let b = win.convertToScreen(button.convert(button.bounds, to: nil))
         let screen = win.screen?.visibleFrame ?? NSScreen.main!.visibleFrame
         var x = b.midX - size.width / 2
-        x = min(max(x, screen.minX + 8), screen.maxX - size.width - 8)
+        // Garde ~250 pt à droite pour le menu des choix, qui s'ouvre de ce côté.
+        x = min(max(x, screen.minX + 8), screen.maxX - size.width - 258)
         panel.setFrame(NSRect(x: x, y: b.minY - size.height - 6, width: size.width, height: size.height), display: true)
         NSApp.activate(ignoringOtherApps: true)
         panel.makeKeyAndOrderFront(nil)

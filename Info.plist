@@ -3,6 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key><string>app.mulot</string>
+	<key>CFBundleIconFile</key><string>AppIcon</string>
 	<key>CFBundleName</key><string>Mulot</string>
 	<key>CFBundleDisplayName</key><string>Mulot</string>
 	<key>CFBundleExecutable</key><string>Mulot</string>
