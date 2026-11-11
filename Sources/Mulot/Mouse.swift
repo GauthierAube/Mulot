@@ -15,6 +15,7 @@ final class Mouse {
     // MARK: - Bouton de pouce (gestes)
 
     func gestureButton(pressed: Bool) {
+        if GameMode.shared.isActive { gestureStart = nil; return }
         let here = NSEvent.mouseLocation
         if pressed { gestureStart = here; return }
         guard let start = gestureStart else { return }
@@ -56,6 +57,12 @@ final class Mouse {
             return Unmanaged.passUnretained(event)
         }
         if event.getIntegerValueField(.eventSourceUserData) == syntheticMarker {
+            return Unmanaged.passUnretained(event)
+        }
+        // Mode jeu : tout passe tel quel, sauf le relâchement d'un clic déjà avalé.
+        if GameMode.shared.isActive {
+            if type == .otherMouseUp,
+               swallowedUps.remove(event.getIntegerValueField(.mouseEventButtonNumber)) != nil { return nil }
             return Unmanaged.passUnretained(event)
         }
 

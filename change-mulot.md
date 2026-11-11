@@ -2,6 +2,12 @@
 
 Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour la souris Logitech MX Master 3S en Bluetooth. Elle règle les boutons et les gestes du pouce, sans compte ni logiciel Logitech. Les dernières modifications sont en haut.
 
+## 10 novembre 2026 (nuit) : mode jeu
+
+- Quand un jeu est au premier plan (GeForce NOW, Steam, Battle.net, CrossOver, ou toute app classée « Jeux »), Mulot s'efface : les boutons gardent leur rôle d'origine et le bouton de pouce ne fait plus de gestes. Avant, un appui involontaire du pouce changeait de bureau en pleine partie et le jeu perdait la souris.
+- La fenêtre l'indique (« Mode jeu : … ») et l'icône de la barre des menus devient une manette. Mulot reprend la main dès qu'on revient à une autre app.
+- Quand un jeu tourne, Mulot n'ouvre plus sa fenêtre de réglages toute seule au lancement, et `build.sh --install` la relance en arrière-plan : le jeu garde la souris.
+
 ## 10 novembre 2026 (nuit) : DMG à partager
 
 - `./make-dmg.sh` fabrique `dist/Mulot-<version>.dmg` : l'app pour Mac Apple Silicon et Intel, un raccourci vers Applications et un Lisez-moi qui explique l'installation et les autorisations.

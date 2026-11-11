@@ -118,6 +118,20 @@ struct PanelView: View {
 
     @ViewBuilder private var warnings: some View {
         if PanelView.captureMode { EmptyView() } else {
+        if let game = GameMode.shared.activeApp {
+            HStack(spacing: 10) {
+                Image(systemName: "gamecontroller.fill").font(.system(size: 15))
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Mode jeu : \(game)").font(.system(size: 13, weight: .semibold))
+                    Text("Les boutons gardent leur rôle d'origine, sans gestes.")
+                        .font(.system(size: 12)).foregroundStyle(Palette.muted)
+                }
+                Spacer()
+            }
+            .padding(10)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Palette.accent.opacity(0.10)))
+            .foregroundStyle(Palette.fg)
+        }
         if let err = model.logi.lastError { warning(err, action: nil) }
         if !model.tapRunning {
             warning("Autorise Mulot dans Accessibilité") {

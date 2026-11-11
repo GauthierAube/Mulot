@@ -22,12 +22,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         appLog("Démarrage — surveillance saisie : \(IOHIDCheckAccess(kIOHIDRequestTypeListenEvent).rawValue), accessibilité : \(AXIsProcessTrusted())")
         _ = IOHIDRequestAccess(kIOHIDRequestTypeListenEvent)
         logi.start()
+        GameMode.shared.onChange = { [weak self] in
+            self?.logi.paused = GameMode.shared.isActive
+            self?.refreshIcon(); self?.panel.refresh()
+        }
+        GameMode.shared.start()
         ensureAccessibility(prompt: true)
 
         // Lancée à la main alors que l'icône de la barre des menus est cachée
         // (encoche, trop d'icônes, ou masquée par macOS) : on ouvre la fenêtre.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             guard let self, !self.statusItemVisible else { return }
+            // Jamais par-dessus un jeu : la fenêtre lui volerait la souris.
+            if GameMode.anyGameRunning { appLog("Jeu en cours : fenêtre de réglages non ouverte"); return }
             appLog("Icône de la barre des menus invisible : fenêtre ouverte au centre")
             self.panel.showCentered()
         }
@@ -56,7 +63,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func refreshIcon() {
         let ok = logi.gestureReady && mouse.isRunning
-        item.button?.image = NSImage(systemSymbolName: ok ? "computermouse.fill" : "computermouse",
+        let symbol = GameMode.shared.isActive ? "gamecontroller" : ok ? "computermouse.fill" : "computermouse"
+        item.button?.image = NSImage(systemSymbolName: symbol,
                                      accessibilityDescription: "Mulot")
         item.button?.title = logi.battery.map { " \($0) %" } ?? ""
         item.button?.imagePosition = .imageLeading

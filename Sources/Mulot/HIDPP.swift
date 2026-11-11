@@ -118,13 +118,28 @@ final class LogiManager {
                 }
                 return
             }
-            self.divertGesture(idx)
+            if !self.paused { self.divertGesture(idx) }
             self.readBattery()
         }
     }
 
+    /// Mode jeu : le bouton de pouce est rendu à la souris tant que c'est vrai.
+    var paused = false {
+        didSet {
+            guard paused != oldValue, device != nil, let idx = features[Self.featReprog] else { return }
+            if paused {
+                if pressedCIDs.contains(Self.gestureCID) { onGestureButton?(false) }
+                pressedCIDs = []
+                let cid = Self.gestureCID
+                send(idx, 3, [UInt8(cid >> 8), UInt8(cid & 0xFF), 0x02, 0, 0]) { _ in }
+            } else {
+                divertGesture(idx)
+            }
+        }
+    }
+
     private func reassert() {
-        guard device != nil, let idx = features[Self.featReprog] else { return }
+        guard device != nil, !paused, let idx = features[Self.featReprog] else { return }
         divertGesture(idx, quiet: true)
     }
 

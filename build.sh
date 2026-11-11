@@ -22,6 +22,6 @@ if [[ "$1" == "--install" ]]; then
   rm -rf "/Applications/Mulot.app"
   cp -R "$APP" /Applications/
   rm -rf "$APP"  # une seule Mulot sur le Mac : celle d'Applications
-  open "/Applications/Mulot.app"
+  open -g "/Applications/Mulot.app"  # en arrière-plan : ne prend pas le premier plan
   echo "Installée dans /Applications et lancée."
 fi
