@@ -16,7 +16,8 @@ No account, no Logitech software, no background updater: just your buttons and t
 - **Forward and back buttons:** next and previous page (⌘] and ⌘[).
 - **Wheel click:** all apps.
 - **Thumb wheel:** horizontal scrolling, or switch tabs, volume, zoom or desktops.
-- **Button behind the wheel:** keeps its original role (ratchet / free spin), handled by the mouse itself.
+- **Main wheel:** choose when it switches from ratchet to free spin (SmartShift: easy, normal or hard), or keep it always ratcheted or always free.
+- **Button behind the wheel:** switches between ratchet and free spin by default, or any other action.
 - Every slot can also: move the window to the left or right display, show the desktop, middle click, play/pause, Spotlight, screenshot, copy, paste, close tab.
 - Battery level in the menu bar and in the window.
 
@@ -74,7 +75,8 @@ Sans compte, sans logiciel Logitech, sans mises à jour en arrière-plan : juste
 - **Boutons avant et arrière :** page suivante et page précédente (⌘] et ⌘[).
 - **Clic de la molette :** toutes les apps.
 - **Molette du pouce :** défilement horizontal, ou changer d'onglet, le volume, le zoom ou le bureau.
-- **Bouton derrière la molette :** garde son rôle d'origine (cran ou roue libre), géré par la souris elle-même.
+- **Grande molette :** choisir quand elle passe des crans à la roue libre (SmartShift : bascule facile, normale ou difficile), ou la garder toujours à crans ou toujours en roue libre.
+- **Bouton derrière la molette :** bascule entre crans et roue libre par défaut, ou n'importe quelle autre action.
 - Chaque bouton peut aussi : envoyer la fenêtre sur l'écran de gauche ou de droite, afficher le bureau, clic du milieu, lecture/pause, Spotlight, capture d'écran, copier, coller, fermer l'onglet.
 - Le niveau de batterie dans la barre des menus et dans la fenêtre.
 

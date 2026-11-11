@@ -38,7 +38,13 @@ final class PanelModel: ObservableObject {
     var tapRunning: Bool { Mouse.shared.isRunning }
 
     func action(_ s: Slot) -> Action { Config.action(s) }
-    func set(_ s: Slot, _ a: Action) { Config.set(s, a); refresh() }
+    func set(_ s: Slot, _ a: Action) {
+        Config.set(s, a)
+        if s == .boutonMolette { logi.applyShiftButton() }
+        refresh()
+    }
+    var wheel: WheelMode { Config.wheel }
+    func setWheel(_ m: WheelMode) { Config.wheel = m; logi.applyWheel(); refresh() }
     var thumb: ThumbMode { Config.thumb }
     func setThumb(_ m: ThumbMode) { Config.thumb = m; refresh() }
 
@@ -71,9 +77,11 @@ struct PanelView: View {
                 rows([Slot.gesteClic, .gesteHaut, .gesteBas, .gesteGauche, .gesteDroite])
             }
             section("Boutons") {
-                rows([Slot.suivant, .precedent, .molette])
+                rows([Slot.suivant, .precedent, .molette, .boutonMolette])
             }
-            section("Molette du pouce") {
+            section("Molettes") {
+                wheelRow
+                Divider().overlay(Palette.line).padding(.leading, 86)
                 thumbRow
             }
             footer
@@ -179,14 +187,22 @@ struct PanelView: View {
         expandable(id: slot.rawValue,
                    image: MouseArt.image(slot.spot, arrow: slot.arrow),
                    caption: slot.shortLabel,
-                   value: model.action(slot).label,
-                   choices: slot.choices.map { a in (a.label, a == model.action(slot), { model.set(slot, a) }) })
+                   value: slot.actionLabel(model.action(slot)),
+                   choices: slot.choices.map { a in (slot.actionLabel(a), a == model.action(slot), { model.set(slot, a) }) })
+    }
+
+    private var wheelRow: some View {
+        expandable(id: "wheel",
+                   image: MouseArt.image(.molette, arrow: .verticale),
+                   caption: "Grande molette",
+                   value: model.wheel.label,
+                   choices: WheelMode.allCases.map { m in (m.choiceLabel, m == model.wheel, { model.setWheel(m) }) })
     }
 
     private var thumbRow: some View {
         expandable(id: "thumb",
                    image: MouseArt.image(.pouceMolette, arrow: .horizontale),
-                   caption: "Tourner",
+                   caption: "Molette du pouce",
                    value: model.thumb.label,
                    choices: ThumbMode.allCases.map { m in (m.label, m == model.thumb, { model.setThumb(m) }) })
     }
@@ -211,7 +227,7 @@ struct PanelView: View {
 
     private func row(image: NSImage, caption: String, value: String, open: Bool) -> some View {
         HStack(spacing: 12) {
-            Image(nsImage: image).resizable().aspectRatio(contentMode: .fit).frame(width: 62, height: 42)
+            Image(nsImage: image).resizable().aspectRatio(contentMode: .fit).frame(width: 58, height: 39)
             VStack(alignment: .leading, spacing: 1) {
                 Text(value).font(.system(size: 14.5, weight: .semibold)).foregroundStyle(Palette.fg)
                 Text(caption).font(.system(size: 11.5)).foregroundStyle(Palette.muted)
@@ -220,7 +236,7 @@ struct PanelView: View {
             Image(systemName: "chevron.right").font(.system(size: 10, weight: .semibold))
                 .foregroundStyle(open ? Palette.accent : Palette.muted)
         }
-        .padding(.horizontal, 12).padding(.vertical, 6)
+        .padding(.horizontal, 12).padding(.vertical, 5)
         .contentShape(Rectangle())
     }
 
@@ -264,7 +280,7 @@ struct ChoiceMenu: View {
             }
         }
         .padding(8)
-        .frame(width: 230)
+        .frame(width: 260)
         .background(Palette.bg)
         .foregroundStyle(Palette.fg)
     }
@@ -350,8 +366,8 @@ final class PanelController {
         let b = win.convertToScreen(button.convert(button.bounds, to: nil))
         let screen = win.screen?.visibleFrame ?? NSScreen.main!.visibleFrame
         var x = b.midX - size.width / 2
-        // Garde ~250 pt à droite pour le menu des choix, qui s'ouvre de ce côté.
-        x = min(max(x, screen.minX + 8), screen.maxX - size.width - 258)
+        // Garde ~280 pt à droite pour le menu des choix, qui s'ouvre de ce côté.
+        x = min(max(x, screen.minX + 8), screen.maxX - size.width - 288)
         show(NSRect(x: x, y: b.minY - size.height - 6, width: size.width, height: size.height))
     }
 
@@ -361,7 +377,7 @@ final class PanelController {
         model.refresh()
         let size = host.fittingSize
         let screen = (NSScreen.screens.first { NSMouseInRect(NSEvent.mouseLocation, $0.frame, false) } ?? NSScreen.main!).visibleFrame
-        show(NSRect(x: screen.midX - size.width / 2 - 125, y: screen.maxY - size.height - 40,
+        show(NSRect(x: screen.midX - size.width / 2 - 140, y: screen.maxY - size.height - 40,
                     width: size.width, height: size.height))
     }
 

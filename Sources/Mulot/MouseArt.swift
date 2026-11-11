@@ -18,7 +18,7 @@ enum Spot {
     }
 }
 
-enum Arrow { case haut, bas, gauche, droite, horizontale }
+enum Arrow { case haut, bas, gauche, droite, horizontale, verticale }
 
 enum MouseArt {
     private static var sources: [String: NSImage] = [:]
@@ -79,6 +79,7 @@ enum MouseArt {
         case .gauche: one(-1, 0)
         case .droite: one(1, 0)
         case .horizontale: one(1, 0); one(-1, 0)
+        case .verticale: one(0, 1); one(0, -1)
         }
     }
 }

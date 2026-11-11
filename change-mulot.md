@@ -2,6 +2,12 @@
 
 Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour la souris Logitech MX Master 3S en Bluetooth. Elle règle les boutons et les gestes du pouce, sans compte ni logiciel Logitech. Les dernières modifications sont en haut.
 
+## 11 novembre 2026 : réglages de la grande molette
+
+- Nouvelle ligne **Grande molette** : choisir quand la molette passe des crans à la roue libre (automatique avec bascule facile, normale ou difficile), ou la garder toujours à crans ou toujours en roue libre. Le réglage est envoyé à la souris (fonction SmartShift) à chaque connexion.
+- Le **bouton derrière la molette** devient réglable : par défaut il bascule toujours entre crans et roue libre, mais on peut lui donner n'importe quelle autre action.
+- La section « Molette du pouce » devient « Molettes » et regroupe les deux molettes. Les lignes sont un peu plus serrées pour que la fenêtre ne grandisse pas.
+
 ## 10 novembre 2026 (nuit) : mode jeu
 
 - Quand un jeu est au premier plan (GeForce NOW, Steam, Battle.net, CrossOver, ou toute app classée « Jeux »), Mulot s'efface : les boutons gardent leur rôle d'origine et le bouton de pouce ne fait plus de gestes. Avant, un appui involontaire du pouce changeait de bureau en pleine partie et le jeu perdait la souris.

@@ -3,7 +3,7 @@ import Foundation
 /// Réglages, enregistrés dans les préférences macOS.
 enum Slot: String, CaseIterable {
     case gesteClic, gesteHaut, gesteBas, gesteGauche, gesteDroite
-    case precedent, suivant, molette
+    case precedent, suivant, molette, boutonMolette
 
     var label: String {
         switch self {
@@ -15,6 +15,7 @@ enum Slot: String, CaseIterable {
         case .precedent: return "Bouton Précédent"
         case .suivant: return "Bouton Suivant"
         case .molette: return "Clic de la molette"
+        case .boutonMolette: return "Bouton derrière la molette"
         }
     }
 
@@ -29,6 +30,7 @@ enum Slot: String, CaseIterable {
         case .precedent: return "Bouton arrière"
         case .suivant: return "Bouton avant"
         case .molette: return "Clic de la molette"
+        case .boutonMolette: return "Bouton derrière la molette"
         }
     }
 
@@ -39,6 +41,7 @@ enum Slot: String, CaseIterable {
         case .precedent: return .precedent
         case .suivant: return .suivant
         case .molette: return .molette
+        case .boutonMolette: return .superieur
         }
     }
     var arrow: Arrow? {
@@ -62,13 +65,20 @@ enum Slot: String, CaseIterable {
         case .precedent: return .precedent
         case .suivant: return .suivant
         case .molette: return .apps
+        case .boutonMolette: return .defaut
         }
+    }
+
+    /// Libellé d'une action pour ce bouton (« Par défaut » dit ce que fait la souris d'origine).
+    func actionLabel(_ a: Action) -> String {
+        if a == .defaut && self == .boutonMolette { return "Crans ↔ roue libre" }
+        return a.label
     }
 
     /// Les actions qui ont un sens pour ce bouton.
     var choices: [Action] {
         switch self {
-        case .precedent, .suivant, .molette: return Action.allCases
+        case .precedent, .suivant, .molette, .boutonMolette: return Action.allCases
         default: return Action.allCases.filter { $0 != .defaut }
         }
     }
@@ -82,8 +92,51 @@ enum Config {
     }
     static func set(_ s: Slot, _ a: Action) { d.set(a.rawValue, forKey: "slot." + s.rawValue) }
 
+    static var wheel: WheelMode {
+        get { d.string(forKey: "wheel").flatMap(WheelMode.init) ?? .auto }
+        set { d.set(newValue.rawValue, forKey: "wheel") }
+    }
+
     static var thumb: ThumbMode {
         get { d.string(forKey: "thumb").flatMap(ThumbMode.init) ?? .defaut }
         set { d.set(newValue.rawValue, forKey: "thumb") }
+    }
+}
+
+/// Comportement de la grande molette (fonction SmartShift de la souris).
+enum WheelMode: String, CaseIterable {
+    case autoFacile, auto, autoDifficile, crans, libre
+
+    var label: String {
+        switch self {
+        case .autoFacile: return "Roue libre dès qu'on la lance"
+        case .auto: return "Crans, roue libre si on la lance"
+        case .autoDifficile: return "Roue libre seulement si on la lance fort"
+        case .crans: return "Toujours à crans"
+        case .libre: return "Toujours en roue libre"
+        }
+    }
+
+    /// Libellé court dans le menu des choix.
+    var choiceLabel: String {
+        switch self {
+        case .autoFacile: return "Automatique, bascule facile"
+        case .auto: return "Automatique (par défaut)"
+        case .autoDifficile: return "Automatique, bascule difficile"
+        case .crans: return "Toujours à crans"
+        case .libre: return "Toujours en roue libre"
+        }
+    }
+
+    /// Réglage HID++ : mode (1 = roue libre, 2 = crans, 0 = inchangé)
+    /// et seuil de bascule automatique (vitesse ; 0xFF = jamais).
+    var hidpp: (mode: UInt8, threshold: UInt8) {
+        switch self {
+        case .autoFacile: return (2, 6)
+        case .auto: return (2, 12)
+        case .autoDifficile: return (2, 24)
+        case .crans: return (2, 0xFF)
+        case .libre: return (1, 0)
+        }
     }
 }

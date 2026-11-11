@@ -10,6 +10,9 @@ final class LogiManager {
 
     // Identifiants HID++
     static let gestureCID: UInt16 = 0x00C3     // bouton de pouce (gestes)
+    static let shiftCID: UInt16 = 0x00C4       // bouton derrière la molette (crans / roue libre)
+    static let featSmartShiftV2: UInt16 = 0x2111   // MX Master 3, 3S, 4
+    static let featSmartShift: UInt16 = 0x2110     // MX Master 2S et plus anciennes
     static let featReprog: UInt16 = 0x1B04     // REPROG_CONTROLS_V4
     static let featBatteryUnified: UInt16 = 0x1004
     static let featBatteryLegacy: UInt16 = 0x1000
@@ -32,6 +35,9 @@ final class LogiManager {
     private(set) var lastError: String?
 
     var onGestureButton: ((Bool) -> Void)?   // true = appuyé
+    var onShiftButton: (() -> Void)?         // bouton derrière la molette, quand Mulot le gère
+    /// Mulot prend la main sur le bouton derrière la molette (sinon la souris le gère seule).
+    var divertShift: Bool { Config.action(.boutonMolette) != .defaut }
     var onStateChange: (() -> Void)?
 
     func start() {
@@ -62,8 +68,9 @@ final class LogiManager {
     /// Rend le bouton de pouce à la souris (à la fermeture de l'app).
     func stop() {
         guard device != nil, let idx = features[Self.featReprog] else { return }
-        let cid = Self.gestureCID
-        send(idx, 3, [UInt8(cid >> 8), UInt8(cid & 0xFF), 0x02, 0, 0]) { _ in }
+        for cid in [Self.gestureCID, Self.shiftCID] {
+            send(idx, 3, [UInt8(cid >> 8), UInt8(cid & 0xFF), 0x02, 0, 0]) { _ in }
+        }
         RunLoop.main.run(until: Date().addingTimeInterval(0.15))
     }
 
@@ -118,7 +125,8 @@ final class LogiManager {
                 }
                 return
             }
-            if !self.paused { self.divertGesture(idx) }
+            if !self.paused { self.divertGesture(idx); self.applyShiftButton() }
+            self.applyWheel()
             self.readBattery()
         }
     }
@@ -130,10 +138,12 @@ final class LogiManager {
             if paused {
                 if pressedCIDs.contains(Self.gestureCID) { onGestureButton?(false) }
                 pressedCIDs = []
-                let cid = Self.gestureCID
-                send(idx, 3, [UInt8(cid >> 8), UInt8(cid & 0xFF), 0x02, 0, 0]) { _ in }
+                for cid in [Self.gestureCID, Self.shiftCID] {
+                    send(idx, 3, [UInt8(cid >> 8), UInt8(cid & 0xFF), 0x02, 0, 0]) { _ in }
+                }
             } else {
                 divertGesture(idx)
+                applyShiftButton(quiet: true)
             }
         }
     }
@@ -141,6 +151,42 @@ final class LogiManager {
     private func reassert() {
         guard device != nil, !paused, let idx = features[Self.featReprog] else { return }
         divertGesture(idx, quiet: true)
+        if divertShift { applyShiftButton(quiet: true) }
+    }
+
+    /// Bouton derrière la molette : détourné vers Mulot, ou rendu à la souris.
+    func applyShiftButton(quiet: Bool = false) {
+        guard device != nil, !paused, let idx = features[Self.featReprog] else { return }
+        let cid = Self.shiftCID, on = divertShift
+        send(idx, 3, [UInt8(cid >> 8), UInt8(cid & 0xFF), on ? 0x03 : 0x02, 0, 0]) { [weak self] resp in
+            if !quiet {
+                self?.log(resp == nil ? "Bouton derrière la molette : réglage refusé par la souris"
+                          : on ? "Bouton derrière la molette géré par Mulot" : "Bouton derrière la molette rendu à la souris")
+            }
+        }
+    }
+
+    /// Grande molette : crans, roue libre et bascule automatique (SmartShift).
+    func applyWheel() {
+        guard device != nil else { return }
+        let (mode, threshold) = Config.wheel.hidpp
+        feature(Self.featSmartShiftV2) { [weak self] idx in
+            guard let self else { return }
+            if let idx {
+                // V2 : fonction 2 = régler [mode, seuil, force des crans (0 = inchangée)]
+                self.send(idx, 2, [mode, threshold, 0]) { resp in self.logWheel(resp != nil) }
+            } else {
+                self.feature(Self.featSmartShift) { idx in
+                    guard let idx else { return self.log("Molette : la souris ne gère pas SmartShift") }
+                    // V1 : fonction 1 = régler [mode, seuil, seuil par défaut (0 = inchangé)]
+                    self.send(idx, 1, [mode, threshold, 0]) { resp in self.logWheel(resp != nil) }
+                }
+            }
+        }
+    }
+
+    private func logWheel(_ ok: Bool) {
+        log(ok ? "Molette : \(Config.wheel.label)" : "Molette : réglage refusé par la souris")
     }
 
     private func divertGesture(_ idx: UInt8, quiet: Bool = false) {
@@ -249,8 +295,10 @@ final class LogiManager {
                 i += 2
             }
             let was = pressedCIDs.contains(Self.gestureCID), isNow = now.contains(Self.gestureCID)
+            let shiftPressed = !pressedCIDs.contains(Self.shiftCID) && now.contains(Self.shiftCID)
             pressedCIDs = now
             if was != isNow { onGestureButton?(isNow) }
+            if shiftPressed { onShiftButton?() }
         }
     }
 

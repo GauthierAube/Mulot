@@ -17,6 +17,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                                 onQuit: { NSApp.terminate(nil) })
 
         logi.onGestureButton = { [weak self] pressed in self?.mouse.gestureButton(pressed: pressed) }
+        logi.onShiftButton = {
+            let action = Config.action(.boutonMolette)
+            appLog("Bouton derrière la molette → \(action.rawValue)")
+            action.perform()
+        }
         logi.onStateChange = { [weak self] in self?.refreshIcon(); self?.panel.refresh() }
 
         appLog("Démarrage — surveillance saisie : \(IOHIDCheckAccess(kIOHIDRequestTypeListenEvent).rawValue), accessibilité : \(AXIsProcessTrusted())")
