@@ -10,8 +10,16 @@ if xcrun --find xcstringstool >/dev/null 2>&1; then
   TEXTES="$PWD/.build/textes"; rm -rf "$TEXTES"; mkdir -p "$TEXTES"
   swift build -c release -Xswiftc -emit-localized-strings -Xswiftc -emit-localized-strings-path -Xswiftc "$TEXTES"
   # (Une compilation partielle ne réécrit pas tous les fichiers : on n'efface donc rien du catalogue.)
-  xcrun xcstringstool sync Localizable.xcstrings --stringsdata "$TEXTES"/*.stringsdata --skip-marking-strings-stale
+  # Rien de recompilé (code inchangé) : pas de textes extraits, le catalogue reste tel quel.
+  EXTRAITS=("$TEXTES"/*.stringsdata(N))
+  if (( ${#EXTRAITS} )); then
+    xcrun xcstringstool sync Localizable.xcstrings --stringsdata "${EXTRAITS[@]}" --skip-marking-strings-stale
+  fi
   xcrun xcstringstool compile Localizable.xcstrings -o Resources
+  mkdir -p Resources/fr.lproj
+  # Le français est la langue des textes du code, mais l'outil d'Apple ne produit que les traductions. Sans fichier
+  # français, macOS se rabattrait sur l'anglais (langue de développement) : on écrit donc la table française, à l'identique.
+  /usr/bin/python3 -c 'import json,plistlib,sys; c=json.load(open("Localizable.xcstrings")); plistlib.dump({k: k for k in c["strings"]}, open(sys.argv[1], "wb"))' Resources/fr.lproj/Localizable.strings
   xcrun xcstringstool compile InfoPlist.xcstrings -o Resources
 else
   swift build -c release

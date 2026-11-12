@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%@ · connectée</key>
+	<string>%@ · connectée</string>
+	<key>Accès à la souris refusé (Surveillance de la saisie ?)</key>
+	<string>Accès à la souris refusé (Surveillance de la saisie ?)</string>
+	<key>Afficher le bureau</key>
+	<string>Afficher le bureau</string>
+	<key>Appuyer</key>
+	<string>Appuyer</string>
+	<key>Appuyer et glisser vers le bas</key>
+	<string>Appuyer et glisser vers le bas</string>
+	<key>Appuyer et glisser vers le haut</key>
+	<string>Appuyer et glisser vers le haut</string>
+	<key>Appuyer et glisser à droite</key>
+	<string>Appuyer et glisser à droite</string>
+	<key>Appuyer et glisser à gauche</key>
+	<string>Appuyer et glisser à gauche</string>
+	<key>Au démarrage</key>
+	<string>Au démarrage</string>
+	<key>Automatique (langue du Mac)</key>
+	<string>Automatique (langue du Mac)</string>
+	<key>Automatique (par défaut)</key>
+	<string>Automatique (par défaut)</string>
+	<key>Automatique, bascule difficile</key>
+	<string>Automatique, bascule difficile</string>
+	<key>Automatique, bascule facile</key>
+	<string>Automatique, bascule facile</string>
+	<key>Autorise Mulot dans Accessibilité</key>
+	<string>Autorise Mulot dans Accessibilité</string>
+	<key>Bouton Précédent</key>
+	<string>Bouton Précédent</string>
+	<key>Bouton Suivant</key>
+	<string>Bouton Suivant</string>
+	<key>Bouton arrière</key>
+	<string>Bouton arrière</string>
+	<key>Bouton avant</key>
+	<string>Bouton avant</string>
+	<key>Bouton de pouce</key>
+	<string>Bouton de pouce</string>
+	<key>Bouton de pouce : simple clic</key>
+	<string>Bouton de pouce : simple clic</string>
+	<key>Bouton derrière la molette</key>
+	<string>Bouton derrière la molette</string>
+	<key>Boutons</key>
+	<string>Boutons</string>
+	<key>Bureau ou écran de droite</key>
+	<string>Bureau ou écran de droite</string>
+	<key>Bureau ou écran de gauche</key>
+	<string>Bureau ou écran de gauche</string>
+	<key>Capture d'écran (⌘⇧5)</key>
+	<string>Capture d'écran (⌘⇧5)</string>
+	<key>Changer d'onglet</key>
+	<string>Changer d'onglet</string>
+	<key>Changer de bureau</key>
+	<string>Changer de bureau</string>
+	<key>Clic de la molette</key>
+	<string>Clic de la molette</string>
+	<key>Clic du milieu</key>
+	<string>Clic du milieu</string>
+	<key>Coller</key>
+	<string>Coller</string>
+	<key>Copier</key>
+	<string>Copier</string>
+	<key>Crans ↔ roue libre</key>
+	<string>Crans ↔ roue libre</string>
+	<key>Crans, roue libre si on la lance</key>
+	<string>Crans, roue libre si on la lance</string>
+	<key>Défilement horizontal</key>
+	<string>Défilement horizontal</string>
+	<key>Envoyer la fenêtre à droite</key>
+	<string>Envoyer la fenêtre à droite</string>
+	<key>Envoyer la fenêtre à gauche</key>
+	<string>Envoyer la fenêtre à gauche</string>
+	<key>Fenêtres de l'app</key>
+	<string>Fenêtres de l'app</string>
+	<key>Fermer l'onglet (⌘W)</key>
+	<string>Fermer l'onglet (⌘W)</string>
+	<key>Geste vers la droite →</key>
+	<string>Geste vers la droite →</string>
+	<key>Geste vers la gauche ←</key>
+	<string>Geste vers la gauche ←</string>
+	<key>Geste vers le bas ↓</key>
+	<string>Geste vers le bas ↓</string>
+	<key>Geste vers le haut ↑</key>
+	<string>Geste vers le haut ↑</string>
+	<key>Grande molette</key>
+	<string>Grande molette</string>
+	<key>Impossible d'activer le bouton de pouce</key>
+	<string>Impossible d'activer le bouton de pouce</string>
+	<key>La souris ne répond pas (Logi Options+ est-il fermé ?)</key>
+	<string>La souris ne répond pas (Logi Options+ est-il fermé ?)</string>
+	<key>Langue</key>
+	<string>Langue</string>
+	<key>Lecture / pause</key>
+	<string>Lecture / pause</string>
+	<key>Les boutons gardent leur rôle d'origine, sans gestes.</key>
+	<string>Les boutons gardent leur rôle d'origine, sans gestes.</string>
+	<key>Mission Control</key>
+	<string>Mission Control</string>
+	<key>Mode jeu : %@</key>
+	<string>Mode jeu : %@</string>
+	<key>Molette du pouce</key>
+	<string>Molette du pouce</string>
+	<key>Molettes</key>
+	<string>Molettes</string>
+	<key>Mulot</key>
+	<string>Mulot</string>
+	<key>Mulot redémarre pour changer de langue.</key>
+	<string>Mulot redémarre pour changer de langue.</string>
+	<key>Page précédente (⌘[)</key>
+	<string>Page précédente (⌘[)</string>
+	<key>Page suivante (⌘])</key>
+	<string>Page suivante (⌘])</string>
+	<key>Par défaut</key>
+	<string>Par défaut</string>
+	<key>Quitter</key>
+	<string>Quitter</string>
+	<key>Reconnecter</key>
+	<string>Reconnecter</string>
+	<key>Rien</key>
+	<string>Rien</string>
+	<key>Roue libre dès qu'on la lance</key>
+	<string>Roue libre dès qu'on la lance</string>
+	<key>Roue libre seulement si on la lance fort</key>
+	<string>Roue libre seulement si on la lance fort</string>
+	<key>Side : afficher le Finder</key>
+	<string>Side : afficher le Finder</string>
+	<key>Side : afficher le panneau du bas</key>
+	<string>Side : afficher le panneau du bas</string>
+	<key>Souris non détectée</key>
+	<string>Souris non détectée</string>
+	<key>Spotlight</key>
+	<string>Spotlight</string>
+	<key>Square : afficher la grille</key>
+	<string>Square : afficher la grille</string>
+	<key>Square : agrandir la fenêtre</key>
+	<string>Square : agrandir la fenêtre</string>
+	<key>Square : application précédente</key>
+	<string>Square : application précédente</string>
+	<key>Square : application suivante</key>
+	<string>Square : application suivante</string>
+	<key>Square : changer d'application</key>
+	<string>Square : changer d'application</string>
+	<key>Toujours en roue libre</key>
+	<string>Toujours en roue libre</string>
+	<key>Toujours à crans</key>
+	<string>Toujours à crans</string>
+	<key>Toutes les apps</key>
+	<string>Toutes les apps</string>
+	<key>Volume</key>
+	<string>Volume</string>
+	<key>Zoom (⌘+ / ⌘−)</key>
+	<string>Zoom (⌘+ / ⌘−)</string>
+	<key>un jeu</key>
+	<string>un jeu</string>
+</dict>
+</plist>
