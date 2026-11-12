@@ -1,0 +1,12 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSHumanReadableCopyright" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "MIT License" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Licence MIT" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

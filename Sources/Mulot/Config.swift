@@ -7,30 +7,30 @@ enum Slot: String, CaseIterable {
 
     var label: String {
         switch self {
-        case .gesteClic: return "Bouton de pouce : simple clic"
-        case .gesteHaut: return "Geste vers le haut ↑"
-        case .gesteBas: return "Geste vers le bas ↓"
-        case .gesteGauche: return "Geste vers la gauche ←"
-        case .gesteDroite: return "Geste vers la droite →"
-        case .precedent: return "Bouton Précédent"
-        case .suivant: return "Bouton Suivant"
-        case .molette: return "Clic de la molette"
-        case .boutonMolette: return "Bouton derrière la molette"
+        case .gesteClic: return String(localized: "Bouton de pouce : simple clic")
+        case .gesteHaut: return String(localized: "Geste vers le haut ↑")
+        case .gesteBas: return String(localized: "Geste vers le bas ↓")
+        case .gesteGauche: return String(localized: "Geste vers la gauche ←")
+        case .gesteDroite: return String(localized: "Geste vers la droite →")
+        case .precedent: return String(localized: "Bouton Précédent")
+        case .suivant: return String(localized: "Bouton Suivant")
+        case .molette: return String(localized: "Clic de la molette")
+        case .boutonMolette: return String(localized: "Bouton derrière la molette")
         }
     }
 
     /// Libellé court affiché au-dessus de l'action.
     var shortLabel: String {
         switch self {
-        case .gesteClic: return "Appuyer"
-        case .gesteHaut: return "Appuyer et glisser vers le haut"
-        case .gesteBas: return "Appuyer et glisser vers le bas"
-        case .gesteGauche: return "Appuyer et glisser à gauche"
-        case .gesteDroite: return "Appuyer et glisser à droite"
-        case .precedent: return "Bouton arrière"
-        case .suivant: return "Bouton avant"
-        case .molette: return "Clic de la molette"
-        case .boutonMolette: return "Bouton derrière la molette"
+        case .gesteClic: return String(localized: "Appuyer")
+        case .gesteHaut: return String(localized: "Appuyer et glisser vers le haut")
+        case .gesteBas: return String(localized: "Appuyer et glisser vers le bas")
+        case .gesteGauche: return String(localized: "Appuyer et glisser à gauche")
+        case .gesteDroite: return String(localized: "Appuyer et glisser à droite")
+        case .precedent: return String(localized: "Bouton arrière")
+        case .suivant: return String(localized: "Bouton avant")
+        case .molette: return String(localized: "Clic de la molette")
+        case .boutonMolette: return String(localized: "Bouton derrière la molette")
         }
     }
 
@@ -71,15 +71,18 @@ enum Slot: String, CaseIterable {
 
     /// Libellé d'une action pour ce bouton (« Par défaut » dit ce que fait la souris d'origine).
     func actionLabel(_ a: Action) -> String {
-        if a == .defaut && self == .boutonMolette { return "Crans ↔ roue libre" }
+        if a == .defaut && self == .boutonMolette { return String(localized: "Crans ↔ roue libre") }
         return a.label
     }
 
     /// Les actions qui ont un sens pour ce bouton.
     var choices: [Action] {
+        // Les actions de Square ne sont proposées que si Square est installée sur ce Mac.
+        // De même pour celles de Side.
+        let possibles = Action.allCases.filter { (!$0.pourSquare || Square.installee) && (!$0.pourSide || Side.disponible) }
         switch self {
-        case .precedent, .suivant, .molette, .boutonMolette: return Action.allCases
-        default: return Action.allCases.filter { $0 != .defaut }
+        case .precedent, .suivant, .molette, .boutonMolette: return possibles
+        default: return possibles.filter { $0 != .defaut }
         }
     }
 }
@@ -109,22 +112,22 @@ enum WheelMode: String, CaseIterable {
 
     var label: String {
         switch self {
-        case .autoFacile: return "Roue libre dès qu'on la lance"
-        case .auto: return "Crans, roue libre si on la lance"
-        case .autoDifficile: return "Roue libre seulement si on la lance fort"
-        case .crans: return "Toujours à crans"
-        case .libre: return "Toujours en roue libre"
+        case .autoFacile: return String(localized: "Roue libre dès qu'on la lance")
+        case .auto: return String(localized: "Crans, roue libre si on la lance")
+        case .autoDifficile: return String(localized: "Roue libre seulement si on la lance fort")
+        case .crans: return String(localized: "Toujours à crans")
+        case .libre: return String(localized: "Toujours en roue libre")
         }
     }
 
     /// Libellé court dans le menu des choix.
     var choiceLabel: String {
         switch self {
-        case .autoFacile: return "Automatique, bascule facile"
-        case .auto: return "Automatique (par défaut)"
-        case .autoDifficile: return "Automatique, bascule difficile"
-        case .crans: return "Toujours à crans"
-        case .libre: return "Toujours en roue libre"
+        case .autoFacile: return String(localized: "Automatique, bascule facile")
+        case .auto: return String(localized: "Automatique (par défaut)")
+        case .autoDifficile: return String(localized: "Automatique, bascule difficile")
+        case .crans: return String(localized: "Toujours à crans")
+        case .libre: return String(localized: "Toujours en roue libre")
         }
     }
 

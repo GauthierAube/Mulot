@@ -73,13 +73,13 @@ struct PanelView: View {
         VStack(alignment: .leading, spacing: 14) {
             header
             warnings
-            section("Bouton de pouce") {
+            section(String(localized: "Bouton de pouce")) {
                 rows([Slot.gesteClic, .gesteHaut, .gesteBas, .gesteGauche, .gesteDroite])
             }
-            section("Boutons") {
+            section(String(localized: "Boutons")) {
                 rows([Slot.suivant, .precedent, .molette, .boutonMolette])
             }
-            section("Molettes") {
+            section(String(localized: "Molettes")) {
                 wheelRow
                 Divider().overlay(Palette.line).padding(.leading, 86)
                 thumbRow
@@ -97,15 +97,15 @@ struct PanelView: View {
         HStack(alignment: .center, spacing: 10) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("Mulot").font(.system(size: 21, weight: .bold, design: .rounded))
-                Text(PanelView.captureMode ? "MX Master 3S · connectée"
-                     : model.logi.deviceName.map { "\($0) · connectée" } ?? "Souris non détectée")
+                Text(PanelView.captureMode ? String(localized: "\("MX Master 3S") · connectée")
+                     : model.logi.deviceName.map { String(localized: "\($0) · connectée") } ?? String(localized: "Souris non détectée"))
                     .font(.system(size: 13)).foregroundStyle(Palette.muted)
             }
             Spacer()
             if let b = model.logi.battery {
                 HStack(spacing: 4) {
                     Image(systemName: model.logi.charging ? "battery.100.bolt" : batteryIcon(b))
-                    Text("\(b) %").monospacedDigit()
+                    Text(verbatim: "\(b) %").monospacedDigit()
                 }
                 .font(.system(size: 13, weight: .semibold))
                 .padding(.horizontal, 11).padding(.vertical, 6)
@@ -142,7 +142,7 @@ struct PanelView: View {
         }
         if let err = model.logi.lastError { warning(err, action: nil) }
         if !model.tapRunning {
-            warning("Autorise Mulot dans Accessibilité") {
+            warning(String(localized: "Autorise Mulot dans Accessibilité")) {
                 NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
             }
         }
@@ -194,7 +194,7 @@ struct PanelView: View {
     private var wheelRow: some View {
         expandable(id: "wheel",
                    image: MouseArt.image(.molette, arrow: .verticale),
-                   caption: "Grande molette",
+                   caption: String(localized: "Grande molette"),
                    value: model.wheel.label,
                    choices: WheelMode.allCases.map { m in (m.choiceLabel, m == model.wheel, { model.setWheel(m) }) })
     }
@@ -202,9 +202,9 @@ struct PanelView: View {
     private var thumbRow: some View {
         expandable(id: "thumb",
                    image: MouseArt.image(.pouceMolette, arrow: .horizontale),
-                   caption: "Molette du pouce",
+                   caption: String(localized: "Molette du pouce"),
                    value: model.thumb.label,
-                   choices: ThumbMode.allCases.map { m in (m.label, m == model.thumb, { model.setThumb(m) }) })
+                   choices: ThumbMode.proposes.map { m in (m.label, m == model.thumb, { model.setThumb(m) }) })
     }
 
     /// Une ligne qui ouvre, sur le côté de la fenêtre, un menu de ses choix.
@@ -254,6 +254,20 @@ struct PanelView: View {
                     Text("Au démarrage").font(.system(size: 12)).fixedSize()
                 }
                 .toggleStyle(.switch).controlSize(.mini)
+            }
+            if !PanelView.captureMode {
+                Menu {
+                    Picker("Langue", selection: Binding(get: { Langue.choisie }, set: { Langue.choisir($0) })) {
+                        ForEach(Langue.allCases) { Text($0.nom).tag($0) }
+                    }
+                    .pickerStyle(.inline)
+                    Text("Mulot redémarre pour changer de langue.")
+                } label: {
+                    Image(systemName: "globe").font(.system(size: 12))
+                }
+                .menuStyle(.button).buttonStyle(.plain).menuIndicator(.hidden).fixedSize()
+                .help("Langue")
+                .accessibilityLabel("Langue")
             }
             Spacer()
             Button("Reconnecter", action: onReconnect)
@@ -360,6 +374,9 @@ final class PanelController {
 
     func toggle(below button: NSStatusBarButton) {
         if panel.isVisible { close(); return }
+        // Un clic sur l'icône alors que la fenêtre est ouverte : l'appui l'a déjà refermée (macOS le voit comme un clic
+        // « ailleurs »), et le relâchement arrive ici juste après. Il ne doit pas la rouvrir.
+        if Date().timeIntervalSince(closedAt) < 0.4 { return }
         model.refresh()
         let size = host.fittingSize
         guard let win = button.window else { return }
@@ -403,7 +420,10 @@ final class PanelController {
         }
     }
 
+    private var closedAt = Date.distantPast
+
     func close() {
+        if panel.isVisible { closedAt = Date() }
         panel.orderOut(nil)
         if let m = outsideMonitor { NSEvent.removeMonitor(m); outsideMonitor = nil }
     }

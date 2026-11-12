@@ -2,6 +2,23 @@
 
 Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour les souris Logitech MX Master en Bluetooth (testée avec la MX Master 3S). Elle règle les boutons et les gestes du pouce, sans compte ni logiciel Logitech. Les dernières modifications sont en haut.
 
+## 12 novembre 2026 (soir) : Mulot en anglais
+
+- Mulot s'affiche en anglais sur tout Mac qui n'est pas réglé en français, et reste en français sinon.
+- Un petit globe, en bas de la fenêtre, permet de choisir : automatique (langue du Mac), français ou English. Mulot redémarre pour changer de langue.
+- Les textes viennent d'un catalogue de traduction Apple (`Localizable.xcstrings`), mis à jour à chaque compilation quand Xcode est installé. Les fichiers compilés (`Resources/en.lproj`, `fr.lproj`) sont gardés dans le dépôt, pour compiler sans Xcode.
+
+## 12 novembre 2026 : actions pour Square
+
+- Quatre nouvelles actions pour les boutons et les gestes du pouce, qui pilotent l'app **Square** (grille des fenêtres ouvertes) : afficher la grille, application suivante, application précédente, agrandir la fenêtre.
+- Nouveau mode pour la **molette du pouce** : « Square : changer d'application » (un cran vers la droite, application suivante ; vers la gauche, précédente).
+- **Le carrousel de Square suit la souris** : si un geste horizontal du pouce est réglé sur « application suivante » ou « précédente » de Square, le carrousel apparaît dès que la souris part de côté, bouton tenu, la suit, et l'application du centre passe devant au relâchement. Un geste très court garde l'ancien comportement (changement direct).
+- Avec la molette du pouce en mode Square, chaque cran avance le carrousel d'une fenêtre, et le choix se fait quand la molette s'arrête. Les crans sont plus espacés, pour ne pas s'emballer.
+- Deux actions pour l'app **Side** : afficher le Finder (la carte) et afficher le panneau du bas. Elles n'apparaissent que si Side est installée dans une version qui accepte ces commandes.
+- Correction : un clic sur l'icône de la barre des menus referme bien la fenêtre quand elle est ouverte (elle se rouvrait aussitôt).
+- Ces choix n'apparaissent que si Square est installée sur le Mac : pour les autres utilisateurs de Mulot, rien ne change.
+- Mulot envoie ses commandes à Square par un message entre applications (`com.gauthieraube.square.commande`). Vérifié du côté de Square ; pas encore essayé avec les boutons de la souris.
+
 ## 11 novembre 2026 : réglages de la grande molette
 
 - Nouvelle ligne **Grande molette** : choisir quand la molette passe des crans à la roue libre (automatique avec bascule facile, normale ou difficile), ou la garder toujours à crans ou toujours en roue libre. Le réglage est envoyé à la souris (fonction SmartShift) à chaque connexion. Pas encore testé sur une vraie souris.

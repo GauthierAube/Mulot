@@ -82,7 +82,7 @@ final class LogiManager {
         guard maxOut >= 20, device == nil else { return }
         let r = IOHIDDeviceOpen(dev, IOOptionBits(kIOHIDOptionsTypeNone))
         guard r == kIOReturnSuccess else {
-            lastError = "Accès à la souris refusé (Surveillance de la saisie ?)"
+            lastError = String(localized: "Accès à la souris refusé (Surveillance de la saisie ?)")
             log("IOHIDDeviceOpen a échoué : \(String(format: "0x%08x", r))")
             onStateChange?()
             // On réessaie tant que l'autorisation n'est pas donnée.
@@ -120,7 +120,7 @@ final class LogiManager {
                 if attempt < 4 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.setup(attempt: attempt + 1) }
                 } else {
-                    self.lastError = "La souris ne répond pas (Logi Options+ est-il fermé ?)"
+                    self.lastError = String(localized: "La souris ne répond pas (Logi Options+ est-il fermé ?)")
                     self.onStateChange?()
                 }
                 return
@@ -196,7 +196,7 @@ final class LogiManager {
             guard let self else { return }
             let was = self.gestureReady
             self.gestureReady = resp != nil
-            self.lastError = resp == nil ? "Impossible d'activer le bouton de pouce" : nil
+            self.lastError = resp == nil ? String(localized: "Impossible d'activer le bouton de pouce") : nil
             if !quiet || was != self.gestureReady {
                 self.log(resp != nil ? "Bouton de pouce activé" : "Échec du détournement du bouton de pouce")
             }

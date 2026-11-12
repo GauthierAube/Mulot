@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%@ · connectée</key>
+	<string>%@ · connected</string>
+	<key>Accès à la souris refusé (Surveillance de la saisie ?)</key>
+	<string>Mouse access denied (Input Monitoring?)</string>
+	<key>Afficher le bureau</key>
+	<string>Show Desktop</string>
+	<key>Appuyer</key>
+	<string>Press</string>
+	<key>Appuyer et glisser vers le bas</key>
+	<string>Press and swipe down</string>
+	<key>Appuyer et glisser vers le haut</key>
+	<string>Press and swipe up</string>
+	<key>Appuyer et glisser à droite</key>
+	<string>Press and swipe right</string>
+	<key>Appuyer et glisser à gauche</key>
+	<string>Press and swipe left</string>
+	<key>Au démarrage</key>
+	<string>Open at login</string>
+	<key>Automatique (langue du Mac)</key>
+	<string>Automatic (Mac language)</string>
+	<key>Automatique (par défaut)</key>
+	<string>Automatic (default)</string>
+	<key>Automatique, bascule difficile</key>
+	<string>Automatic, hard switch</string>
+	<key>Automatique, bascule facile</key>
+	<string>Automatic, easy switch</string>
+	<key>Autorise Mulot dans Accessibilité</key>
+	<string>Allow Mulot in Accessibility</string>
+	<key>Bouton Précédent</key>
+	<string>Back button</string>
+	<key>Bouton Suivant</key>
+	<string>Forward button</string>
+	<key>Bouton arrière</key>
+	<string>Back button</string>
+	<key>Bouton avant</key>
+	<string>Forward button</string>
+	<key>Bouton de pouce</key>
+	<string>Thumb button</string>
+	<key>Bouton de pouce : simple clic</key>
+	<string>Thumb button: single click</string>
+	<key>Bouton derrière la molette</key>
+	<string>Button behind the wheel</string>
+	<key>Boutons</key>
+	<string>Buttons</string>
+	<key>Bureau ou écran de droite</key>
+	<string>Desktop or Display on the Right</string>
+	<key>Bureau ou écran de gauche</key>
+	<string>Desktop or Display on the Left</string>
+	<key>Capture d'écran (⌘⇧5)</key>
+	<string>Screenshot (⌘⇧5)</string>
+	<key>Changer d'onglet</key>
+	<string>Switch Tabs</string>
+	<key>Changer de bureau</key>
+	<string>Switch Desktops</string>
+	<key>Clic de la molette</key>
+	<string>Wheel click</string>
+	<key>Clic du milieu</key>
+	<string>Middle Click</string>
+	<key>Coller</key>
+	<string>Paste</string>
+	<key>Copier</key>
+	<string>Copy</string>
+	<key>Crans ↔ roue libre</key>
+	<string>Ratchet ↔ free-spin</string>
+	<key>Crans, roue libre si on la lance</key>
+	<string>Ratchet, free-spin when flicked</string>
+	<key>Défilement horizontal</key>
+	<string>Horizontal Scrolling</string>
+	<key>Envoyer la fenêtre à droite</key>
+	<string>Move Window to the Right</string>
+	<key>Envoyer la fenêtre à gauche</key>
+	<string>Move Window to the Left</string>
+	<key>Fenêtres de l'app</key>
+	<string>App Windows</string>
+	<key>Fermer l'onglet (⌘W)</key>
+	<string>Close Tab (⌘W)</string>
+	<key>Geste vers la droite →</key>
+	<string>Gesture right →</string>
+	<key>Geste vers la gauche ←</key>
+	<string>Gesture left ←</string>
+	<key>Geste vers le bas ↓</key>
+	<string>Gesture down ↓</string>
+	<key>Geste vers le haut ↑</key>
+	<string>Gesture up ↑</string>
+	<key>Grande molette</key>
+	<string>Main wheel</string>
+	<key>Impossible d'activer le bouton de pouce</key>
+	<string>Can't enable the thumb button</string>
+	<key>La souris ne répond pas (Logi Options+ est-il fermé ?)</key>
+	<string>The mouse isn't responding (is Logi Options+ closed?)</string>
+	<key>Langue</key>
+	<string>Language</string>
+	<key>Lecture / pause</key>
+	<string>Play / Pause</string>
+	<key>Les boutons gardent leur rôle d'origine, sans gestes.</key>
+	<string>Buttons keep their original function, without gestures.</string>
+	<key>Mission Control</key>
+	<string>Mission Control</string>
+	<key>Mode jeu : %@</key>
+	<string>Game mode: %@</string>
+	<key>Molette du pouce</key>
+	<string>Thumb wheel</string>
+	<key>Molettes</key>
+	<string>Wheels</string>
+	<key>Mulot</key>
+	<string>Mulot</string>
+	<key>Mulot redémarre pour changer de langue.</key>
+	<string>Mulot restarts to change its language.</string>
+	<key>Page précédente (⌘[)</key>
+	<string>Previous Page (⌘[)</string>
+	<key>Page suivante (⌘])</key>
+	<string>Next Page (⌘])</string>
+	<key>Par défaut</key>
+	<string>Default</string>
+	<key>Quitter</key>
+	<string>Quit</string>
+	<key>Reconnecter</key>
+	<string>Reconnect</string>
+	<key>Rien</key>
+	<string>Nothing</string>
+	<key>Roue libre dès qu'on la lance</key>
+	<string>Free-spin as soon as it's flicked</string>
+	<key>Roue libre seulement si on la lance fort</key>
+	<string>Free-spin only when flicked hard</string>
+	<key>Side : afficher le Finder</key>
+	<string>Side: Show Finder</string>
+	<key>Side : afficher le panneau du bas</key>
+	<string>Side: Show Drawer</string>
+	<key>Souris non détectée</key>
+	<string>Mouse not detected</string>
+	<key>Spotlight</key>
+	<string>Spotlight</string>
+	<key>Square : afficher la grille</key>
+	<string>Square: Show Grid</string>
+	<key>Square : agrandir la fenêtre</key>
+	<string>Square: Fill the Screen</string>
+	<key>Square : application précédente</key>
+	<string>Square: Previous App</string>
+	<key>Square : application suivante</key>
+	<string>Square: Next App</string>
+	<key>Square : changer d'application</key>
+	<string>Square: Switch Apps</string>
+	<key>Toujours en roue libre</key>
+	<string>Always free-spin</string>
+	<key>Toujours à crans</key>
+	<string>Always ratchet</string>
+	<key>Toutes les apps</key>
+	<string>All Apps</string>
+	<key>Volume</key>
+	<string>Volume</string>
+	<key>Zoom (⌘+ / ⌘−)</key>
+	<string>Zoom (⌘+ / ⌘−)</string>
+	<key>un jeu</key>
+	<string>a game</string>
+</dict>
+</plist>

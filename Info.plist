@@ -3,6 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key><string>app.mulot</string>
+	<!-- Langue de développement : l'anglais, pour que tout Mac qui n'est pas en français affiche Mulot en anglais. -->
+	<key>CFBundleDevelopmentRegion</key><string>en</string>
+	<key>CFBundleLocalizations</key><array><string>en</string><string>fr</string></array>
 	<key>CFBundleIconFile</key><string>AppIcon</string>
 	<key>CFBundleName</key><string>Mulot</string>
 	<key>CFBundleDisplayName</key><string>Mulot</string>
@@ -12,6 +15,6 @@
 	<key>CFBundleVersion</key><string>1</string>
 	<key>LSMinimumSystemVersion</key><string>13.0</string>
 	<key>LSUIElement</key><true/>
-	<key>NSHumanReadableCopyright</key><string>Licence MIT</string>
+	<key>NSHumanReadableCopyright</key><string>MIT License</string>
 </dict>
 </plist>

@@ -10,28 +10,49 @@ enum Action: String, CaseIterable {
     case missionControl, fenetresApp, bureau, apps
     case bureauGauche, bureauDroite, fenetreGauche, fenetreDroite
     case clicMilieu, lecturePause, spotlight, capture, copier, coller, fermerOnglet
+    // Actions de l'app Square (grille des fenêtres) : proposées seulement si Square est installée sur ce Mac.
+    case squareGrille, squareSuivante, squarePrecedente, squareAgrandir
+    // Actions de l'app Side (carte Finder, panneau du bas) : proposées seulement si Side les accepte sur ce Mac.
+    case sideCarte, sidePanneau
+
+    /// Cette action a besoin de l'app Side.
+    var pourSide: Bool { self == .sideCarte || self == .sidePanneau }
+
+    /// Cette action a besoin de l'app Square.
+    var pourSquare: Bool {
+        switch self {
+        case .squareGrille, .squareSuivante, .squarePrecedente, .squareAgrandir: return true
+        default: return false
+        }
+    }
 
     var label: String {
         switch self {
-        case .defaut: return "Par défaut"
-        case .rien: return "Rien"
-        case .precedent: return "Page précédente (⌘[)"
-        case .suivant: return "Page suivante (⌘])"
-        case .missionControl: return "Mission Control"
-        case .fenetresApp: return "Fenêtres de l'app"
-        case .bureau: return "Afficher le bureau"
-        case .apps: return "Toutes les apps"
-        case .bureauGauche: return "Bureau ou écran de gauche"
-        case .bureauDroite: return "Bureau ou écran de droite"
-        case .fenetreGauche: return "Envoyer la fenêtre à gauche"
-        case .fenetreDroite: return "Envoyer la fenêtre à droite"
-        case .clicMilieu: return "Clic du milieu"
-        case .lecturePause: return "Lecture / pause"
-        case .spotlight: return "Spotlight"
-        case .capture: return "Capture d'écran (⌘⇧5)"
-        case .copier: return "Copier"
-        case .coller: return "Coller"
-        case .fermerOnglet: return "Fermer l'onglet (⌘W)"
+        case .defaut: return String(localized: "Par défaut")
+        case .rien: return String(localized: "Rien")
+        case .precedent: return String(localized: "Page précédente (⌘[)")
+        case .suivant: return String(localized: "Page suivante (⌘])")
+        case .missionControl: return String(localized: "Mission Control")
+        case .fenetresApp: return String(localized: "Fenêtres de l'app")
+        case .bureau: return String(localized: "Afficher le bureau")
+        case .apps: return String(localized: "Toutes les apps")
+        case .bureauGauche: return String(localized: "Bureau ou écran de gauche")
+        case .bureauDroite: return String(localized: "Bureau ou écran de droite")
+        case .fenetreGauche: return String(localized: "Envoyer la fenêtre à gauche")
+        case .fenetreDroite: return String(localized: "Envoyer la fenêtre à droite")
+        case .clicMilieu: return String(localized: "Clic du milieu")
+        case .lecturePause: return String(localized: "Lecture / pause")
+        case .spotlight: return String(localized: "Spotlight")
+        case .capture: return String(localized: "Capture d'écran (⌘⇧5)")
+        case .copier: return String(localized: "Copier")
+        case .coller: return String(localized: "Coller")
+        case .fermerOnglet: return String(localized: "Fermer l'onglet (⌘W)")
+        case .squareGrille: return String(localized: "Square : afficher la grille")
+        case .squareSuivante: return String(localized: "Square : application suivante")
+        case .squarePrecedente: return String(localized: "Square : application précédente")
+        case .squareAgrandir: return String(localized: "Square : agrandir la fenêtre")
+        case .sideCarte: return String(localized: "Side : afficher le Finder")
+        case .sidePanneau: return String(localized: "Side : afficher le panneau du bas")
         }
     }
 
@@ -55,22 +76,61 @@ enum Action: String, CaseIterable {
         case .copier: Keys.combo(kVK_ANSI_C, .maskCommand)
         case .coller: Keys.combo(kVK_ANSI_V, .maskCommand)
         case .fermerOnglet: Keys.combo(kVK_ANSI_W, .maskCommand)
+        case .squareGrille: Square.envoyer("grille")
+        case .squareSuivante: Square.envoyer("suivante")
+        case .squarePrecedente: Square.envoyer("precedente")
+        case .squareAgrandir: Square.envoyer("agrandir")
+        case .sideCarte: Side.envoyer("carte")
+        case .sidePanneau: Side.envoyer("panneau")
         }
+    }
+}
+
+/// L'app Side (carte Finder qui descend du bord de l'écran). Mulot lui envoie ses commandes par un message entre applications.
+enum Side {
+    static let identifiant = "com.gauthieraube.side"
+
+    /// Side est-elle installée, dans une version qui accepte ces commandes ? (Elle le signale dans ses réglages.)
+    static var disponible: Bool {
+        NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifiant) != nil
+            && (CFPreferencesCopyAppValue("commandesExterieures" as CFString, identifiant as CFString) as? Bool) == true
+    }
+
+    static func envoyer(_ commande: String) {
+        DistributedNotificationCenter.default().postNotificationName(.init(identifiant + ".commande"), object: commande,
+                                                                     userInfo: nil, deliverImmediately: true)
+    }
+}
+
+/// L'app Square (grille des fenêtres ouvertes). Mulot lui envoie ses commandes par un message entre applications.
+enum Square {
+    static let identifiant = "com.gauthieraube.square"
+
+    /// Square est-elle installée sur ce Mac ? Ses actions ne sont proposées que dans ce cas.
+    static var installee: Bool { NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifiant) != nil }
+
+    static func envoyer(_ commande: String) {
+        DistributedNotificationCenter.default().postNotificationName(.init(identifiant + ".commande"), object: commande,
+                                                                     userInfo: nil, deliverImmediately: true)
     }
 }
 
 /// Ce que fait la molette pour le pouce.
 enum ThumbMode: String, CaseIterable {
-    case defaut, onglets, volume, zoom, bureaux, rien
+    case defaut, onglets, volume, zoom, bureaux, square, rien
+
+    /// Les modes proposés : celui de Square seulement si Square est installée.
+    static var proposes: [ThumbMode] { allCases.filter { $0 != .square || Square.installee } }
 
     var label: String {
         switch self {
-        case .defaut: return "Défilement horizontal"
-        case .onglets: return "Changer d'onglet"
-        case .volume: return "Volume"
-        case .zoom: return "Zoom (⌘+ / ⌘−)"
-        case .bureaux: return "Changer de bureau"
-        case .rien: return "Rien"
+        case .defaut: return String(localized: "Défilement horizontal")
+        case .onglets: return String(localized: "Changer d'onglet")
+        case .volume: return String(localized: "Volume")
+        case .zoom: return String(localized: "Zoom (⌘+ / ⌘−)")
+        case .bureaux: return String(localized: "Changer de bureau")
+        case .square: return String(localized: "Square : changer d'application")
+        case .rien: return String(localized: "Rien")
         }
     }
 
@@ -83,6 +143,8 @@ enum ThumbMode: String, CaseIterable {
         case .volume: Keys.media(right ? 0 : 1)
         case .zoom: Keys.combo(right ? kVK_ANSI_Equal : kVK_ANSI_Minus, .maskCommand)
         case .bureaux: (right ? Action.bureauDroite : Action.bureauGauche).perform()
+        // Chaque cran avance le carrousel de Square d'une fenêtre ; il choisit quand la molette s'arrête.
+        case .square: Square.envoyer(right ? "carrousel:cran:1" : "carrousel:cran:-1")
         }
     }
 }

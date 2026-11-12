@@ -35,7 +35,7 @@ final class GameMode {
     private func update(_ app: NSRunningApplication?) {
         // Ouvrir la fenêtre de Mulot ne doit pas sortir du mode jeu.
         if app?.processIdentifier == ProcessInfo.processInfo.processIdentifier { return }
-        let name = app.flatMap { Self.isGame($0) ? ($0.localizedName ?? "un jeu") : nil }
+        let name = app.flatMap { Self.isGame($0) ? ($0.localizedName ?? String(localized: "un jeu")) : nil }
         guard name != activeApp else { return }
         activeApp = name
         appLog(name.map { "Mode jeu : \($0)" } ?? "Mode jeu terminé")
