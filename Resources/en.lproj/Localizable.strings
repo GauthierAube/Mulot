@@ -4,6 +4,8 @@
 <dict>
 	<key>%@ · connectée</key>
 	<string>%@ · connected</string>
+	<key>%lld pt par application</key>
+	<string>%lld pt per app</string>
 	<key>Accès à la souris refusé (Surveillance de la saisie ?)</key>
 	<string>Mouse access denied (Input Monitoring?)</string>
 	<key>Afficher le bureau</key>
@@ -42,6 +44,8 @@
 	<string>Thumb button</string>
 	<key>Bouton de pouce : simple clic</key>
 	<string>Thumb button: single click</string>
+	<key>Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.</key>
+	<string>With the thumb button held: how far the mouse travels to move to the next app in Side.</string>
 	<key>Bouton derrière la molette</key>
 	<string>Button behind the wheel</string>
 	<key>Boutons</key>
@@ -116,6 +120,8 @@
 	<string>Next Page (⌘])</string>
 	<key>Par défaut</key>
 	<string>Default</string>
+	<key>Posé</key>
+	<string>Calm</string>
 	<key>Quitter</key>
 	<string>Quit</string>
 	<key>Reconnecter</key>
@@ -126,6 +132,8 @@
 	<string>Free-spin as soon as it's flicked</string>
 	<key>Roue libre seulement si on la lance fort</key>
 	<string>Free-spin only when flicked hard</string>
+	<key>Sensibilité du carrousel</key>
+	<string>Carousel sensitivity</string>
 	<key>Side : afficher la grille</key>
 	<string>Side: Show Grid</string>
 	<key>Side : afficher le Finder</key>
@@ -150,6 +158,8 @@
 	<string>Always ratchet</string>
 	<key>Toutes les apps</key>
 	<string>All Apps</string>
+	<key>Vif</key>
+	<string>Quick</string>
 	<key>Volume</key>
 	<string>Volume</string>
 	<key>Zoom (⌘+ / ⌘−)</key>

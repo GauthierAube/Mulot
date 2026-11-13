@@ -11,6 +11,16 @@
         }
       }
     },
+    "%lld pt par application": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld pt per app"
+          }
+        }
+      }
+    },
     "Accès à la souris refusé (Surveillance de la saisie ?)": {
       "localizations": {
         "en": {
@@ -197,6 +207,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Thumb button: single click"
+          }
+        }
+      }
+    },
+    "Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With the thumb button held: how far the mouse travels to move to the next app in Side."
           }
         }
       }
@@ -571,6 +591,16 @@
         }
       }
     },
+    "Posé": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calm"
+          }
+        }
+      }
+    },
     "Quitter": {
       "localizations": {
         "en": {
@@ -617,6 +647,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Free-spin only when flicked hard"
+          }
+        }
+      }
+    },
+    "Sensibilité du carrousel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carousel sensitivity"
           }
         }
       }
@@ -737,6 +777,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "All Apps"
+          }
+        }
+      }
+    },
+    "Vif": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick"
           }
         }
       }

@@ -4,6 +4,8 @@
 <dict>
 	<key>%@ · connectée</key>
 	<string>%@ · connectée</string>
+	<key>%lld pt par application</key>
+	<string>%lld pt par application</string>
 	<key>Accès à la souris refusé (Surveillance de la saisie ?)</key>
 	<string>Accès à la souris refusé (Surveillance de la saisie ?)</string>
 	<key>Afficher le bureau</key>
@@ -42,6 +44,8 @@
 	<string>Bouton de pouce</string>
 	<key>Bouton de pouce : simple clic</key>
 	<string>Bouton de pouce : simple clic</string>
+	<key>Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.</key>
+	<string>Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.</string>
 	<key>Bouton derrière la molette</key>
 	<string>Bouton derrière la molette</string>
 	<key>Boutons</key>
@@ -116,6 +120,8 @@
 	<string>Page suivante (⌘])</string>
 	<key>Par défaut</key>
 	<string>Par défaut</string>
+	<key>Posé</key>
+	<string>Posé</string>
 	<key>Quitter</key>
 	<string>Quitter</string>
 	<key>Reconnecter</key>
@@ -126,6 +132,8 @@
 	<string>Roue libre dès qu'on la lance</string>
 	<key>Roue libre seulement si on la lance fort</key>
 	<string>Roue libre seulement si on la lance fort</string>
+	<key>Sensibilité du carrousel</key>
+	<string>Sensibilité du carrousel</string>
 	<key>Side : afficher la grille</key>
 	<string>Side : afficher la grille</string>
 	<key>Side : afficher le Finder</key>
@@ -150,6 +158,8 @@
 	<string>Toujours à crans</string>
 	<key>Toutes les apps</key>
 	<string>Toutes les apps</string>
+	<key>Vif</key>
+	<string>Vif</string>
 	<key>Volume</key>
 	<string>Volume</string>
 	<key>Zoom (⌘+ / ⌘−)</key>

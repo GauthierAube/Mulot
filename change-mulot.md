@@ -3,6 +3,9 @@
 Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour les souris Logitech MX Master en Bluetooth (testée avec la MX Master 3S). Elle règle les boutons et les gestes du pouce, sans compte ni logiciel Logitech. Les dernières modifications sont en haut.
 
 
+## 13 novembre 2026 : sensibilité du carrousel
+- Quand un geste de côté du bouton de pouce mène le carrousel de Side (application suivante ou précédente), le panneau propose un curseur « Sensibilité du carrousel », de « Vif » à « Posé » : le chemin que fait la souris pour passer d'une application à la suivante (80 à 600 points, 150 au départ).
+
 ## 13 novembre 2026 : les actions s'appellent « Side »
 - Square faisant partie de Side, les actions de la grille et du carrousel s'appellent maintenant « Side : afficher la grille », « Side : application suivante », « Side : application précédente », « Side : agrandir la fenêtre », et le mode de la molette du pouce « Side : changer d'application ». Les réglages déjà faits sont gardés.
 

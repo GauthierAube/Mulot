@@ -19,7 +19,19 @@ final class Mouse {
     // et l'application du centre passe devant au relâchement.
     private var carrouselTimer: Timer?
     private var carrouselActif = false
-    private let carrouselPas: CGFloat = 150      // déplacement de la souris, en points, pour avancer d'une fenêtre
+    /// Déplacement de la souris, en points, pour avancer d'une fenêtre. Réglable dans le panneau (« Sensibilité du carrousel ») :
+    /// plus il est grand, moins le geste est sensible.
+    static let carrouselPasDefaut: Double = 150
+    static let carrouselPasPlage: ClosedRange<Double> = 80...600
+    private var carrouselPas: CGFloat {
+        CGFloat(UserDefaults.standard.object(forKey: "carrouselPas") as? Double ?? Self.carrouselPasDefaut)
+    }
+    /// Le geste du pouce mène-t-il le carrousel de Side ? (Alors son réglage de sensibilité est proposé.)
+    static var carrouselRegle: Bool {
+        guard Square.installee else { return false }
+        let d = Config.action(.gesteDroite), g = Config.action(.gesteGauche)
+        return [d, g].contains(.squareSuivante) || [d, g].contains(.squarePrecedente)
+    }
 
     /// +1 si glisser vers la droite mène à l'application suivante, -1 pour l'inverse, 0 si aucun geste horizontal n'est pour Square.
     private var sensCarrousel: CGFloat {

@@ -75,6 +75,11 @@ struct PanelView: View {
             warnings
             section(String(localized: "Bouton de pouce")) {
                 rows([Slot.gesteClic, .gesteHaut, .gesteBas, .gesteGauche, .gesteDroite])
+                // Le geste de côté mène le carrousel de Side : sa sensibilité se règle ici.
+                if Mouse.carrouselRegle {
+                    Divider().overlay(Palette.line).padding(.leading, 86)
+                    SensibiliteCarrousel()
+                }
             }
             section(String(localized: "Boutons")) {
                 rows([Slot.suivant, .precedent, .molette, .boutonMolette])
@@ -429,4 +434,30 @@ final class PanelController {
     }
 
     func refresh() { model.refresh() }
+}
+
+
+/// Le réglage de sensibilité du carrousel de Side, quand le bouton de pouce le mène : de combien la souris doit glisser
+/// pour passer d'une application à la suivante.
+struct SensibiliteCarrousel: View {
+    @AppStorage("carrouselPas") private var pas: Double = Mouse.carrouselPasDefaut
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text("Sensibilité du carrousel").font(.system(size: 13, weight: .semibold)).foregroundStyle(Palette.fg)
+                Spacer()
+                Text("\(Int(pas.rounded())) pt par application").font(.system(size: 11.5)).monospacedDigit().foregroundStyle(Palette.muted)
+            }
+            HStack(spacing: 8) {
+                Text("Vif").font(.system(size: 11)).foregroundStyle(Palette.muted)
+                // Le curseur va de « vif » (peu de chemin) à « posé » (beaucoup de chemin).
+                Slider(value: $pas, in: Mouse.carrouselPasPlage)
+                Text("Posé").font(.system(size: 11)).foregroundStyle(Palette.muted)
+            }
+            Text("Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.")
+                .font(.system(size: 11)).foregroundStyle(Palette.muted).fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(.horizontal, 14).padding(.vertical, 10)
+    }
 }
