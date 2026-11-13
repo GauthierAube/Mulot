@@ -106,8 +106,12 @@ enum Side {
 enum Square {
     static let identifiant = "com.gauthieraube.square"
 
-    /// Square est-elle installée sur ce Mac ? Ses actions ne sont proposées que dans ce cas.
-    static var installee: Bool { NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifiant) != nil }
+    /// Le plein écran est-il disponible ? Depuis le 13/11/2026, Square fait partie de Side, qui écoute toujours les commandes
+    /// adressées à Square. Ses actions sont donc proposées si Side ou l'ancien Square est installé.
+    static var installee: Bool {
+        NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifiant) != nil
+            || NSWorkspace.shared.urlForApplication(withBundleIdentifier: Side.identifiant) != nil
+    }
 
     static func envoyer(_ commande: String) {
         DistributedNotificationCenter.default().postNotificationName(.init(identifiant + ".commande"), object: commande,

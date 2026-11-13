@@ -2,6 +2,10 @@
 
 Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour les souris Logitech MX Master en Bluetooth (testée avec la MX Master 3S). Elle règle les boutons et les gestes du pouce, sans compte ni logiciel Logitech. Les dernières modifications sont en haut.
 
+
+## 13 novembre 2026 : Square fait partie de Side
+- Les actions de la grille et du carrousel restent proposées quand seul Side est installé : Side contient désormais Square et écoute toujours ses commandes.
+
 ## 12 novembre 2026 (soir) : Mulot en anglais
 
 - Mulot s'affiche en anglais sur tout Mac qui n'est pas réglé en français, et reste en français sinon.
