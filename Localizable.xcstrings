@@ -621,6 +621,16 @@
         }
       }
     },
+    "Side : afficher la grille": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Side: Show Grid"
+          }
+        }
+      }
+    },
     "Side : afficher le Finder": {
       "localizations": {
         "en": {
@@ -641,6 +651,46 @@
         }
       }
     },
+    "Side : agrandir la fenêtre": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Side: Fill the Screen"
+          }
+        }
+      }
+    },
+    "Side : application précédente": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Side: Previous App"
+          }
+        }
+      }
+    },
+    "Side : application suivante": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Side: Next App"
+          }
+        }
+      }
+    },
+    "Side : changer d'application": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Side: Switch Apps"
+          }
+        }
+      }
+    },
     "Souris non détectée": {
       "localizations": {
         "en": {
@@ -657,56 +707,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Spotlight"
-          }
-        }
-      }
-    },
-    "Square : afficher la grille": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Square: Show Grid"
-          }
-        }
-      }
-    },
-    "Square : agrandir la fenêtre": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Square: Fill the Screen"
-          }
-        }
-      }
-    },
-    "Square : application précédente": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Square: Previous App"
-          }
-        }
-      }
-    },
-    "Square : application suivante": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Square: Next App"
-          }
-        }
-      }
-    },
-    "Square : changer d'application": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Square: Switch Apps"
           }
         }
       }

@@ -126,24 +126,24 @@
 	<string>Free-spin as soon as it's flicked</string>
 	<key>Roue libre seulement si on la lance fort</key>
 	<string>Free-spin only when flicked hard</string>
+	<key>Side : afficher la grille</key>
+	<string>Side: Show Grid</string>
 	<key>Side : afficher le Finder</key>
 	<string>Side: Show Finder</string>
 	<key>Side : afficher le panneau du bas</key>
 	<string>Side: Show Drawer</string>
+	<key>Side : agrandir la fenêtre</key>
+	<string>Side: Fill the Screen</string>
+	<key>Side : application précédente</key>
+	<string>Side: Previous App</string>
+	<key>Side : application suivante</key>
+	<string>Side: Next App</string>
+	<key>Side : changer d'application</key>
+	<string>Side: Switch Apps</string>
 	<key>Souris non détectée</key>
 	<string>Mouse not detected</string>
 	<key>Spotlight</key>
 	<string>Spotlight</string>
-	<key>Square : afficher la grille</key>
-	<string>Square: Show Grid</string>
-	<key>Square : agrandir la fenêtre</key>
-	<string>Square: Fill the Screen</string>
-	<key>Square : application précédente</key>
-	<string>Square: Previous App</string>
-	<key>Square : application suivante</key>
-	<string>Square: Next App</string>
-	<key>Square : changer d'application</key>
-	<string>Square: Switch Apps</string>
 	<key>Toujours en roue libre</key>
 	<string>Always free-spin</string>
 	<key>Toujours à crans</key>

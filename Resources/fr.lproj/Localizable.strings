@@ -126,24 +126,24 @@
 	<string>Roue libre dès qu'on la lance</string>
 	<key>Roue libre seulement si on la lance fort</key>
 	<string>Roue libre seulement si on la lance fort</string>
+	<key>Side : afficher la grille</key>
+	<string>Side : afficher la grille</string>
 	<key>Side : afficher le Finder</key>
 	<string>Side : afficher le Finder</string>
 	<key>Side : afficher le panneau du bas</key>
 	<string>Side : afficher le panneau du bas</string>
+	<key>Side : agrandir la fenêtre</key>
+	<string>Side : agrandir la fenêtre</string>
+	<key>Side : application précédente</key>
+	<string>Side : application précédente</string>
+	<key>Side : application suivante</key>
+	<string>Side : application suivante</string>
+	<key>Side : changer d'application</key>
+	<string>Side : changer d'application</string>
 	<key>Souris non détectée</key>
 	<string>Souris non détectée</string>
 	<key>Spotlight</key>
 	<string>Spotlight</string>
-	<key>Square : afficher la grille</key>
-	<string>Square : afficher la grille</string>
-	<key>Square : agrandir la fenêtre</key>
-	<string>Square : agrandir la fenêtre</string>
-	<key>Square : application précédente</key>
-	<string>Square : application précédente</string>
-	<key>Square : application suivante</key>
-	<string>Square : application suivante</string>
-	<key>Square : changer d'application</key>
-	<string>Square : changer d'application</string>
 	<key>Toujours en roue libre</key>
 	<string>Toujours en roue libre</string>
 	<key>Toujours à crans</key>

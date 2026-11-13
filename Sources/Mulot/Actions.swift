@@ -10,7 +10,7 @@ enum Action: String, CaseIterable {
     case missionControl, fenetresApp, bureau, apps
     case bureauGauche, bureauDroite, fenetreGauche, fenetreDroite
     case clicMilieu, lecturePause, spotlight, capture, copier, coller, fermerOnglet
-    // Actions de l'app Square (grille des fenêtres) : proposées seulement si Square est installée sur ce Mac.
+    // Actions du plein écran de Side (grille des fenêtres, carrousel ; ex-Square) : proposées si Side est installé.
     case squareGrille, squareSuivante, squarePrecedente, squareAgrandir
     // Actions de l'app Side (carte Finder, panneau du bas) : proposées seulement si Side les accepte sur ce Mac.
     case sideCarte, sidePanneau
@@ -47,10 +47,10 @@ enum Action: String, CaseIterable {
         case .copier: return String(localized: "Copier")
         case .coller: return String(localized: "Coller")
         case .fermerOnglet: return String(localized: "Fermer l'onglet (⌘W)")
-        case .squareGrille: return String(localized: "Square : afficher la grille")
-        case .squareSuivante: return String(localized: "Square : application suivante")
-        case .squarePrecedente: return String(localized: "Square : application précédente")
-        case .squareAgrandir: return String(localized: "Square : agrandir la fenêtre")
+        case .squareGrille: return String(localized: "Side : afficher la grille")
+        case .squareSuivante: return String(localized: "Side : application suivante")
+        case .squarePrecedente: return String(localized: "Side : application précédente")
+        case .squareAgrandir: return String(localized: "Side : agrandir la fenêtre")
         case .sideCarte: return String(localized: "Side : afficher le Finder")
         case .sidePanneau: return String(localized: "Side : afficher le panneau du bas")
         }
@@ -123,7 +123,7 @@ enum Square {
 enum ThumbMode: String, CaseIterable {
     case defaut, onglets, volume, zoom, bureaux, square, rien
 
-    /// Les modes proposés : celui de Square seulement si Square est installée.
+    /// Les modes proposés : celui du carrousel seulement si Side (ou l'ancien Square) est installé.
     static var proposes: [ThumbMode] { allCases.filter { $0 != .square || Square.installee } }
 
     var label: String {
@@ -133,7 +133,7 @@ enum ThumbMode: String, CaseIterable {
         case .volume: return String(localized: "Volume")
         case .zoom: return String(localized: "Zoom (⌘+ / ⌘−)")
         case .bureaux: return String(localized: "Changer de bureau")
-        case .square: return String(localized: "Square : changer d'application")
+        case .square: return String(localized: "Side : changer d'application")
         case .rien: return String(localized: "Rien")
         }
     }
