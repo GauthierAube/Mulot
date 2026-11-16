@@ -30,6 +30,7 @@ final class Mouse {
     static var carrouselRegle: Bool {
         guard Square.installee else { return false }
         let d = Config.action(.gesteDroite), g = Config.action(.gesteGauche)
+        if Side.disponible, [Config.action(.gesteHaut), Config.action(.gesteBas)].contains(.sidePanneau) { return true }
         return [d, g].contains(.squareSuivante) || [d, g].contains(.squarePrecedente)
     }
 
@@ -42,6 +43,23 @@ final class Mouse {
         return 0
     }
 
+    // Tiroir de Side : quand un geste vertical du pouce est réglé sur « Side : afficher le tiroir », tenir le bouton et
+    // continuer dans ce sens ouvre le tiroir et affiche son sélecteur vertical d'applications (comme les quatre doigts
+    // au trackpad). Il suit la souris ; au relâchement, l'application du centre prend la place.
+    private var tiroirActif = false
+    /// +1 si glisser vers le haut ouvre le tiroir, -1 si c'est vers le bas, 0 si aucun geste vertical n'est pour le tiroir.
+    private var sensTiroir: CGFloat {
+        guard Side.disponible else { return 0 }
+        if Config.action(.gesteHaut) == .sidePanneau { return 1 }
+        if Config.action(.gesteBas) == .sidePanneau { return -1 }
+        return 0
+    }
+    /// Le chemin à faire avant que le sélecteur n'apparaisse : en deçà, c'est le geste simple (ouvrir ou fermer le tiroir).
+    private let seuilTiroir: CGFloat = 90
+    private func positionTiroir(_ start: CGPoint) -> String {
+        String(format: "%.3f", Double(((NSEvent.mouseLocation.y - start.y) * sensTiroir - seuilTiroir) / carrouselPas))
+    }
+
     private func positionCarrousel(_ start: CGPoint) -> String {
         String(format: "%.3f", Double((NSEvent.mouseLocation.x - start.x) / carrouselPas * sensCarrousel))
     }
@@ -50,6 +68,16 @@ final class Mouse {
         guard let start = gestureStart else { return }
         let here = NSEvent.mouseLocation
         let dx = here.x - start.x, dy = here.y - start.y
+        if tiroirActif { Side.envoyer("tiroir:suivre:" + positionTiroir(start)); return }
+        let sens = sensTiroir
+        if !carrouselActif, sens != 0, dy * sens > seuilTiroir, abs(dy) > 1.5 * abs(dx) {
+            // Le sélecteur du tiroir s'allume quand la souris continue nettement dans le sens qui ouvre le tiroir.
+            tiroirActif = true
+            Side.envoyer("tiroir:debut")
+            Side.envoyer("tiroir:suivre:" + positionTiroir(start))
+            return
+        }
+        guard sensCarrousel != 0 else { return }
         if !carrouselActif {
             // Il s'allume quand la souris part nettement de côté.
             guard abs(dx) > 24, abs(dx) > 1.5 * abs(dy) else { return }
@@ -60,13 +88,14 @@ final class Mouse {
     }
 
     func gestureButton(pressed: Bool) {
-        if GameMode.shared.isActive { gestureStart = nil; carrouselTimer?.invalidate(); carrouselTimer = nil; carrouselActif = false; return }
+        if GameMode.shared.isActive { gestureStart = nil; carrouselTimer?.invalidate(); carrouselTimer = nil; carrouselActif = false; tiroirActif = false; return }
         let here = NSEvent.mouseLocation
         if pressed {
             gestureStart = here
             carrouselActif = false
+            tiroirActif = false
             carrouselTimer?.invalidate()
-            if sensCarrousel != 0 {
+            if sensCarrousel != 0 || sensTiroir != 0 {
                 let t = Timer(timeInterval: 1.0 / 60, repeats: true) { [weak self] _ in self?.suivreLeCarrousel() }
                 RunLoop.main.add(t, forMode: .common)
                 carrouselTimer = t
@@ -75,6 +104,14 @@ final class Mouse {
         }
         carrouselTimer?.invalidate(); carrouselTimer = nil
         guard let start = gestureStart else { return }
+        if tiroirActif {
+            // Le sélecteur du tiroir était affiché : au relâchement, Side y met l'application du centre.
+            tiroirActif = false
+            gestureStart = nil
+            appLog("Geste sélecteur du tiroir de Side, relâché à \(positionTiroir(start)) application")
+            Side.envoyer("tiroir:fin")
+            return
+        }
         if carrouselActif {
             // Le carrousel était affiché : au relâchement, Square fait passer devant l'application du centre.
             carrouselActif = false
