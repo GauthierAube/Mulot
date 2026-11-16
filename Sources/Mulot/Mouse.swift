@@ -40,14 +40,14 @@ final class Mouse {
     }
     /// La même chose pour le sélecteur vertical du tiroir (« Sensibilité du sélecteur du tiroir ») : l'écran est moins haut
     /// que large, il faut donc moins de chemin par application.
-    static let tiroirPasDefaut: Double = 90
-    static let tiroirPasPlage: ClosedRange<Double> = 40...300
+    static let tiroirPasDefaut: Double = 140
+    static let tiroirPasPlage: ClosedRange<Double> = 60...400
     private var tiroirPas: CGFloat {
         CGFloat(UserDefaults.standard.object(forKey: "tiroirPas") as? Double ?? Self.tiroirPasDefaut)
     }
     /// Le chemin de la souris qui fait monter le tiroir de fermé à ouvert : il suit la souris, comme les doigts au trackpad.
     /// Au-delà, le sélecteur prend le relais dans le même mouvement.
-    private let courseTiroir: CGFloat = 110
+    private let courseTiroir: CGFloat = 170
 
     /// Le geste de côté mène-t-il le carrousel de Side ? (Alors son réglage de sensibilité est proposé.)
     static var carrouselRegle: Bool {
