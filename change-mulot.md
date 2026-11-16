@@ -3,6 +3,10 @@
 Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour les souris Logitech MX Master en Bluetooth (testée avec la MX Master 3S). Elle règle les boutons et les gestes du pouce, sans compte ni logiciel Logitech. Les dernières modifications sont en haut.
 
 
+## 16 novembre 2026 : le tiroir de Side suit la souris
+- Geste vers le tiroir : le tiroir monte en suivant la souris (110 points pour l'ouvrir en entier), comme avec les doigts au trackpad, et le sélecteur vertical prend le relais dans le même mouvement, sans pause. Avant, le tiroir s'ouvrait d'un coup et le sélecteur attendait qu'il soit arrivé.
+- Revenir vers le point de départ avant de lâcher fait redescendre le tiroir.
+
 ## 16 novembre 2026 : gestes du pouce sans attendre le relâchement
 - Les gestes du bouton de pouce partent dès que la souris a fait 28 points dans une direction, bouton encore tenu. Avant, rien ne se passait avant de lâcher le bouton : le Finder ou le tiroir de Side s'ouvraient avec un temps de retard, et un geste un peu court passait pour un clic.
 - Geste vers le tiroir de Side : le tiroir s'ouvre tout de suite ; en continuant 50 points de plus, son sélecteur vertical apparaît. Tiroir déjà ouvert et geste court : il se referme, comme avant.

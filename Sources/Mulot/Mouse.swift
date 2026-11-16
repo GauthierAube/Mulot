@@ -45,8 +45,9 @@ final class Mouse {
     private var tiroirPas: CGFloat {
         CGFloat(UserDefaults.standard.object(forKey: "tiroirPas") as? Double ?? Self.tiroirPasDefaut)
     }
-    /// Le chemin à faire, une fois le tiroir ouvert, avant que son sélecteur n'apparaisse.
-    private let seuilSelecteur: CGFloat = 50
+    /// Le chemin de la souris qui fait monter le tiroir de fermé à ouvert : il suit la souris, comme les doigts au trackpad.
+    /// Au-delà, le sélecteur prend le relais dans le même mouvement.
+    private let courseTiroir: CGFloat = 110
 
     /// Le geste de côté mène-t-il le carrousel de Side ? (Alors son réglage de sensibilité est proposé.)
     static var carrouselRegle: Bool {
@@ -73,10 +74,12 @@ final class Mouse {
     private func positionCarrousel(_ start: CGPoint) -> String {
         String(format: "%.3f", Double((NSEvent.mouseLocation.x - start.x) / carrouselPas * sensCarrousel))
     }
-    /// Combien d'applications plus loin, dans le sélecteur du tiroir (négatif : le sélecteur n'est pas encore apparu).
+    /// Où en est le geste du tiroir : de 0 (fermé) à 1 (ouvert) pendant que le tiroir monte, puis 1 + le nombre
+    /// d'applications parcourues dans le sélecteur (1,5 = une demi-application plus loin).
     private func positionTiroir(_ start: CGPoint) -> String {
-        let chemin = (NSEvent.mouseLocation.y - start.y) * sensTiroir - seuilGeste - seuilSelecteur
-        return String(format: "%.3f", Double(chemin / tiroirPas))
+        let chemin = (NSEvent.mouseLocation.y - start.y) * sensTiroir - seuilGeste
+        let v = chemin <= courseTiroir ? chemin / courseTiroir : 1 + (chemin - courseTiroir) / tiroirPas
+        return String(format: "%.3f", Double(v))
     }
 
     /// 60 fois par seconde tant que le bouton est tenu.
@@ -96,6 +99,7 @@ final class Mouse {
             tiroirActif = true
             appLog("Geste \(slot.rawValue) → tiroir de Side, suivi")
             Side.envoyer("tiroir:debut")
+            Side.envoyer("tiroir:suivre:" + positionTiroir(start))
             return
         }
         if (slot == .gesteDroite || slot == .gesteGauche), sensCarrousel != 0,
