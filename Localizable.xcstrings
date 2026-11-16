@@ -11,6 +11,16 @@
         }
       }
     },
+    "%lld %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
     "%lld pt par application" : {
       "localizations" : {
         "en" : {
@@ -354,6 +364,9 @@
         }
       }
     },
+    "Déclenchement des gestes" : {
+
+    },
     "Défilement horizontal" : {
       "localizations" : {
         "en" : {
@@ -484,6 +497,12 @@
         }
       }
     },
+    "Le chemin que fait la souris pour ouvrir le tiroir de Side en entier. Il suit la souris, comme les doigts au trackpad." : {
+
+    },
+    "Le chemin que fait la souris, bouton de pouce tenu, avant que le geste parte. Plus court : plus vif ; plus long : moins de gestes partis par mégarde." : {
+
+    },
     "Lecture / pause" : {
       "localizations" : {
         "en" : {
@@ -543,6 +562,9 @@
           }
         }
       }
+    },
+    "Montée du tiroir" : {
+
     },
     "Mulot" : {
       "localizations" : {
@@ -816,6 +838,15 @@
           }
         }
       }
+    },
+    "pt avant le geste" : {
+
+    },
+    "pt par application" : {
+
+    },
+    "pt pour l'ouvrir" : {
+
     },
     "un jeu" : {
       "localizations" : {

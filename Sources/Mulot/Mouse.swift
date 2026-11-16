@@ -29,7 +29,12 @@ final class Mouse {
     /// L'action d'un geste simple déjà déclenchée pendant que le bouton est tenu : rien de plus au relâchement.
     private var gesteParti = false
     /// Le chemin, en points, au-delà duquel le geste part (assez pour ne pas le confondre avec un clic du bouton).
-    private let seuilGeste: CGFloat = 28
+    /// Réglable dans le panneau (« Déclenchement des gestes »).
+    static let seuilGesteDefaut: Double = 40
+    static let seuilGestePlage: ClosedRange<Double> = 15...150
+    private var seuilGeste: CGFloat {
+        CGFloat(UserDefaults.standard.object(forKey: "seuilGeste") as? Double ?? Self.seuilGesteDefaut)
+    }
 
     /// Déplacement de la souris, en points, pour avancer d'une fenêtre dans le carrousel horizontal. Réglable dans le
     /// panneau (« Sensibilité du carrousel ») : plus il est grand, moins le geste est sensible.
@@ -47,7 +52,12 @@ final class Mouse {
     }
     /// Le chemin de la souris qui fait monter le tiroir de fermé à ouvert : il suit la souris, comme les doigts au trackpad.
     /// Au-delà, le sélecteur prend le relais dans le même mouvement.
-    private let courseTiroir: CGFloat = 170
+    /// Réglable dans le panneau (« Montée du tiroir »).
+    static let courseTiroirDefaut: Double = 170
+    static let courseTiroirPlage: ClosedRange<Double> = 60...500
+    private var courseTiroir: CGFloat {
+        CGFloat(UserDefaults.standard.object(forKey: "courseTiroir") as? Double ?? Self.courseTiroirDefaut)
+    }
 
     /// Le geste de côté mène-t-il le carrousel de Side ? (Alors son réglage de sensibilité est proposé.)
     static var carrouselRegle: Bool {

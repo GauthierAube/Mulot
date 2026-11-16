@@ -4,6 +4,8 @@
 <dict>
 	<key>%@ · connectée</key>
 	<string>%@ · connectée</string>
+	<key>%lld %@</key>
+	<string>%lld %@</string>
 	<key>%lld pt par application</key>
 	<string>%lld pt par application</string>
 	<key>Accès à la souris refusé (Surveillance de la saisie ?)</key>
@@ -74,6 +76,8 @@
 	<string>Crans ↔ roue libre</string>
 	<key>Crans, roue libre si on la lance</key>
 	<string>Crans, roue libre si on la lance</string>
+	<key>Déclenchement des gestes</key>
+	<string>Déclenchement des gestes</string>
 	<key>Défilement horizontal</key>
 	<string>Défilement horizontal</string>
 	<key>Envoyer la fenêtre à droite</key>
@@ -100,6 +104,10 @@
 	<string>La souris ne répond pas (Logi Options+ est-il fermé ?)</string>
 	<key>Langue</key>
 	<string>Langue</string>
+	<key>Le chemin que fait la souris pour ouvrir le tiroir de Side en entier. Il suit la souris, comme les doigts au trackpad.</key>
+	<string>Le chemin que fait la souris pour ouvrir le tiroir de Side en entier. Il suit la souris, comme les doigts au trackpad.</string>
+	<key>Le chemin que fait la souris, bouton de pouce tenu, avant que le geste parte. Plus court : plus vif ; plus long : moins de gestes partis par mégarde.</key>
+	<string>Le chemin que fait la souris, bouton de pouce tenu, avant que le geste parte. Plus court : plus vif ; plus long : moins de gestes partis par mégarde.</string>
 	<key>Lecture / pause</key>
 	<string>Lecture / pause</string>
 	<key>Les boutons gardent leur rôle d'origine, sans gestes.</key>
@@ -112,6 +120,8 @@
 	<string>Molette du pouce</string>
 	<key>Molettes</key>
 	<string>Molettes</string>
+	<key>Montée du tiroir</key>
+	<string>Montée du tiroir</string>
 	<key>Mulot</key>
 	<string>Mulot</string>
 	<key>Mulot redémarre pour changer de langue.</key>
@@ -168,6 +178,12 @@
 	<string>Volume</string>
 	<key>Zoom (⌘+ / ⌘−)</key>
 	<string>Zoom (⌘+ / ⌘−)</string>
+	<key>pt avant le geste</key>
+	<string>pt avant le geste</string>
+	<key>pt par application</key>
+	<string>pt par application</string>
+	<key>pt pour l'ouvrir</key>
+	<string>pt pour l'ouvrir</string>
 	<key>un jeu</key>
 	<string>un jeu</string>
 </dict>
