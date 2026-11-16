@@ -29,7 +29,7 @@ final class Mouse {
     /// L'action d'un geste simple déjà déclenchée pendant que le bouton est tenu : rien de plus au relâchement.
     private var gesteParti = false
     /// Le chemin, en points, au-delà duquel le geste part (assez pour ne pas le confondre avec un clic du bouton).
-    /// Réglable dans le panneau (« Déclenchement des gestes »).
+    /// Fixe (le 16/11/2026, un réglage a été essayé puis retiré pour garder le panneau léger).
     static let seuilGesteDefaut: Double = 40
     static let seuilGestePlage: ClosedRange<Double> = 15...150
     private var seuilGeste: CGFloat {
@@ -43,7 +43,7 @@ final class Mouse {
     private var carrouselPas: CGFloat {
         CGFloat(UserDefaults.standard.object(forKey: "carrouselPas") as? Double ?? Self.carrouselPasDefaut)
     }
-    /// La même chose pour le sélecteur vertical du tiroir (« Sensibilité du sélecteur du tiroir ») : l'écran est moins haut
+    /// La même chose pour le sélecteur vertical du tiroir (fixe, pas de réglage dans le panneau) : l'écran est moins haut
     /// que large, il faut donc moins de chemin par application.
     static let tiroirPasDefaut: Double = 140
     static let tiroirPasPlage: ClosedRange<Double> = 60...400
@@ -52,7 +52,7 @@ final class Mouse {
     }
     /// Le chemin de la souris qui fait monter le tiroir de fermé à ouvert : il suit la souris, comme les doigts au trackpad.
     /// Au-delà, le sélecteur prend le relais dans le même mouvement.
-    /// Réglable dans le panneau (« Montée du tiroir »).
+    /// C'est aussi le moment où le sélecteur apparaît : réglable dans le panneau (« Apparition du sélecteur du tiroir »).
     static let courseTiroirDefaut: Double = 170
     static let courseTiroirPlage: ClosedRange<Double> = 60...500
     private var courseTiroir: CGFloat {

@@ -51,6 +51,9 @@
         }
       }
     },
+    "Apparition du sélecteur du tiroir" : {
+
+    },
     "Appuyer" : {
       "localizations" : {
         "en" : {
@@ -232,6 +235,9 @@
       }
     },
     "Bouton de pouce tenu vers le tiroir : le chemin que fait la souris pour passer à l'application suivante du tiroir de Side." : {
+
+    },
+    "Bouton de pouce tenu, en montant : le tiroir suit la souris, puis le sélecteur d'applications apparaît. Plus tôt ou plus tard." : {
 
     },
     "Bouton derrière la molette" : {
@@ -779,6 +785,9 @@
         }
       }
     },
+    "Tard" : {
+
+    },
     "Toujours en roue libre" : {
       "localizations" : {
         "en" : {
@@ -809,6 +818,9 @@
         }
       }
     },
+    "Tôt" : {
+
+    },
     "Vif" : {
       "localizations" : {
         "en" : {
@@ -838,6 +850,9 @@
           }
         }
       }
+    },
+    "pt" : {
+
     },
     "pt avant le geste" : {
 

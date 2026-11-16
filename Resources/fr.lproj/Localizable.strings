@@ -12,6 +12,8 @@
 	<string>Accès à la souris refusé (Surveillance de la saisie ?)</string>
 	<key>Afficher le bureau</key>
 	<string>Afficher le bureau</string>
+	<key>Apparition du sélecteur du tiroir</key>
+	<string>Apparition du sélecteur du tiroir</string>
 	<key>Appuyer</key>
 	<string>Appuyer</string>
 	<key>Appuyer et glisser vers le bas</key>
@@ -50,6 +52,8 @@
 	<string>Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.</string>
 	<key>Bouton de pouce tenu vers le tiroir : le chemin que fait la souris pour passer à l'application suivante du tiroir de Side.</key>
 	<string>Bouton de pouce tenu vers le tiroir : le chemin que fait la souris pour passer à l'application suivante du tiroir de Side.</string>
+	<key>Bouton de pouce tenu, en montant : le tiroir suit la souris, puis le sélecteur d'applications apparaît. Plus tôt ou plus tard.</key>
+	<string>Bouton de pouce tenu, en montant : le tiroir suit la souris, puis le sélecteur d'applications apparaît. Plus tôt ou plus tard.</string>
 	<key>Bouton derrière la molette</key>
 	<string>Bouton derrière la molette</string>
 	<key>Boutons</key>
@@ -166,18 +170,24 @@
 	<string>Souris non détectée</string>
 	<key>Spotlight</key>
 	<string>Spotlight</string>
+	<key>Tard</key>
+	<string>Tard</string>
 	<key>Toujours en roue libre</key>
 	<string>Toujours en roue libre</string>
 	<key>Toujours à crans</key>
 	<string>Toujours à crans</string>
 	<key>Toutes les apps</key>
 	<string>Toutes les apps</string>
+	<key>Tôt</key>
+	<string>Tôt</string>
 	<key>Vif</key>
 	<string>Vif</string>
 	<key>Volume</key>
 	<string>Volume</string>
 	<key>Zoom (⌘+ / ⌘−)</key>
 	<string>Zoom (⌘+ / ⌘−)</string>
+	<key>pt</key>
+	<string>pt</string>
 	<key>pt avant le geste</key>
 	<string>pt avant le geste</string>
 	<key>pt par application</key>

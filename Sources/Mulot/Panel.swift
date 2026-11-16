@@ -75,28 +75,18 @@ struct PanelView: View {
             warnings
             section(String(localized: "Bouton de pouce")) {
                 rows([Slot.gesteClic, .gesteHaut, .gesteBas, .gesteGauche, .gesteDroite])
-                // Le chemin avant qu'un geste parte : vaut pour tous les gestes du bouton de pouce.
-                Divider().overlay(Palette.line).padding(.leading, 86)
-                SensibiliteCarrousel(cle: "seuilGeste", defaut: Mouse.seuilGesteDefaut, plage: Mouse.seuilGestePlage,
-                                     titre: String(localized: "Déclenchement des gestes"),
-                                     aide: String(localized: "Le chemin que fait la souris, bouton de pouce tenu, avant que le geste parte. Plus court : plus vif ; plus long : moins de gestes partis par mégarde."),
-                                     unite: String(localized: "pt avant le geste"))
                 // Le geste de côté mène le carrousel de Side : sa sensibilité se règle ici.
                 if Mouse.carrouselRegle {
                     Divider().overlay(Palette.line).padding(.leading, 86)
                     SensibiliteCarrousel()
                 }
-                // Le geste vers le tiroir mène son sélecteur vertical : sa sensibilité à part (l'écran est moins haut que large).
+                // Le geste vers le tiroir : un seul réglage, le moment où son sélecteur apparaît en montant.
                 if Mouse.tiroirRegle {
                     Divider().overlay(Palette.line).padding(.leading, 86)
                     SensibiliteCarrousel(cle: "courseTiroir", defaut: Mouse.courseTiroirDefaut, plage: Mouse.courseTiroirPlage,
-                                         titre: String(localized: "Montée du tiroir"),
-                                         aide: String(localized: "Le chemin que fait la souris pour ouvrir le tiroir de Side en entier. Il suit la souris, comme les doigts au trackpad."),
-                                         unite: String(localized: "pt pour l'ouvrir"))
-                    Divider().overlay(Palette.line).padding(.leading, 86)
-                    SensibiliteCarrousel(cle: "tiroirPas", defaut: Mouse.tiroirPasDefaut, plage: Mouse.tiroirPasPlage,
-                                         titre: String(localized: "Sensibilité du sélecteur du tiroir"),
-                                         aide: String(localized: "Bouton de pouce tenu vers le tiroir : le chemin que fait la souris pour passer à l'application suivante du tiroir de Side."))
+                                         titre: String(localized: "Apparition du sélecteur du tiroir"),
+                                         aide: String(localized: "Bouton de pouce tenu, en montant : le tiroir suit la souris, puis le sélecteur d'applications apparaît. Plus tôt ou plus tard."),
+                                         unite: String(localized: "pt"), gauche: String(localized: "Tôt"), droite: String(localized: "Tard"))
                 }
             }
             section(String(localized: "Boutons")) {
@@ -463,13 +453,16 @@ struct SensibiliteCarrousel: View {
     let titre: String
     let aide: String
     let unite: String
+    let gauche: String
+    let droite: String
 
     init(cle: String = "carrouselPas", defaut: Double = Mouse.carrouselPasDefaut, plage: ClosedRange<Double> = Mouse.carrouselPasPlage,
          titre: String = String(localized: "Sensibilité du carrousel"),
          aide: String = String(localized: "Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side."),
-         unite: String = String(localized: "pt par application")) {
+         unite: String = String(localized: "pt par application"),
+         gauche: String = String(localized: "Vif"), droite: String = String(localized: "Posé")) {
         _pas = AppStorage(wrappedValue: defaut, cle)
-        self.plage = plage; self.titre = titre; self.aide = aide; self.unite = unite
+        self.plage = plage; self.titre = titre; self.aide = aide; self.unite = unite; self.gauche = gauche; self.droite = droite
     }
 
     var body: some View {
@@ -480,10 +473,10 @@ struct SensibiliteCarrousel: View {
                 Text("\(Int(pas.rounded())) \(unite)").font(.system(size: 11.5)).monospacedDigit().foregroundStyle(Palette.muted)
             }
             HStack(spacing: 8) {
-                Text("Vif").font(.system(size: 11)).foregroundStyle(Palette.muted)
+                Text(gauche).font(.system(size: 11)).foregroundStyle(Palette.muted)
                 // Le curseur va de « vif » (peu de chemin) à « posé » (beaucoup de chemin).
                 Slider(value: $pas, in: plage)
-                Text("Posé").font(.system(size: 11)).foregroundStyle(Palette.muted)
+                Text(droite).font(.system(size: 11)).foregroundStyle(Palette.muted)
             }
             Text(aide)
                 .font(.system(size: 11)).foregroundStyle(Palette.muted).fixedSize(horizontal: false, vertical: true)
