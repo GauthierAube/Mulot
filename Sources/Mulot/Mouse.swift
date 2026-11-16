@@ -86,10 +86,18 @@ final class Mouse {
     }
     /// Où en est le geste du tiroir : de 0 (fermé) à 1 (ouvert) pendant que le tiroir monte, puis 1 + le nombre
     /// d'applications parcourues dans le sélecteur (1,5 = une demi-application plus loin).
+    /// Suivi d'un tiroir déjà ouvert : le chemin compte depuis l'appui, sans seuil (le sélecteur est déjà là).
+    private var tiroirDejaOuvert = false
     private func positionTiroir(_ start: CGPoint) -> String {
-        let chemin = (NSEvent.mouseLocation.y - start.y) * sensTiroir - seuilGeste
+        let brut = (NSEvent.mouseLocation.y - start.y) * sensTiroir
+        let chemin = brut - seuilGeste
         let v = chemin <= courseTiroir ? chemin / courseTiroir : 1 + (chemin - courseTiroir) / tiroirPas
-        return String(format: "%.3f", Double(v))
+        return String(format: "%.3f:%.3f", Double(v), Double(brut / tiroirPas))
+    }
+    /// Side écrit dans ses réglages si son tiroir est ouvert.
+    private var tiroirDeSideOuvert: Bool {
+        CFPreferencesAppSynchronize(Side.identifiant as CFString)
+        return (CFPreferencesCopyAppValue("tiroirOuvert" as CFString, Side.identifiant as CFString) as? Bool) == true
     }
 
     /// 60 fois par seconde tant que le bouton est tenu.
@@ -126,7 +134,7 @@ final class Mouse {
 
     private func arreterLeSuivi() {
         suiviTimer?.invalidate(); suiviTimer = nil
-        carrouselActif = false; tiroirActif = false; gesteParti = false
+        carrouselActif = false; tiroirActif = false; gesteParti = false; tiroirDejaOuvert = false
     }
 
     func gestureButton(pressed: Bool) {
@@ -135,6 +143,13 @@ final class Mouse {
         if pressed {
             arreterLeSuivi()
             gestureStart = here
+            // Tiroir de Side déjà ouvert : le sélecteur apparaît dès l'appui, sans attendre que la souris bouge.
+            if Mouse.tiroirRegle, tiroirDeSideOuvert {
+                tiroirActif = true
+                tiroirDejaOuvert = true
+                appLog("Bouton de pouce, tiroir de Side ouvert : sélecteur tout de suite")
+                Side.envoyer("tiroir:debut")
+            }
             let t = Timer(timeInterval: 1.0 / 60, repeats: true) { [weak self] _ in self?.suivreLeGeste() }
             RunLoop.main.add(t, forMode: .common)
             suiviTimer = t
