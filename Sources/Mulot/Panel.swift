@@ -80,6 +80,13 @@ struct PanelView: View {
                     Divider().overlay(Palette.line).padding(.leading, 86)
                     SensibiliteCarrousel()
                 }
+                // Le geste vers le tiroir mène son sélecteur vertical : sa sensibilité à part (l'écran est moins haut que large).
+                if Mouse.tiroirRegle {
+                    Divider().overlay(Palette.line).padding(.leading, 86)
+                    SensibiliteCarrousel(cle: "tiroirPas", defaut: Mouse.tiroirPasDefaut, plage: Mouse.tiroirPasPlage,
+                                         titre: String(localized: "Sensibilité du sélecteur du tiroir"),
+                                         aide: String(localized: "Bouton de pouce tenu vers le tiroir : le chemin que fait la souris pour passer à l'application suivante du tiroir de Side."))
+                }
             }
             section(String(localized: "Boutons")) {
                 rows([Slot.suivant, .precedent, .molette, .boutonMolette])
@@ -440,22 +447,32 @@ final class PanelController {
 /// Le réglage de sensibilité du carrousel de Side, quand le bouton de pouce le mène : de combien la souris doit glisser
 /// pour passer d'une application à la suivante.
 struct SensibiliteCarrousel: View {
-    @AppStorage("carrouselPas") private var pas: Double = Mouse.carrouselPasDefaut
+    @AppStorage private var pas: Double
+    let plage: ClosedRange<Double>
+    let titre: String
+    let aide: String
+
+    init(cle: String = "carrouselPas", defaut: Double = Mouse.carrouselPasDefaut, plage: ClosedRange<Double> = Mouse.carrouselPasPlage,
+         titre: String = String(localized: "Sensibilité du carrousel"),
+         aide: String = String(localized: "Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.")) {
+        _pas = AppStorage(wrappedValue: defaut, cle)
+        self.plage = plage; self.titre = titre; self.aide = aide
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
-                Text("Sensibilité du carrousel").font(.system(size: 13, weight: .semibold)).foregroundStyle(Palette.fg)
+                Text(titre).font(.system(size: 13, weight: .semibold)).foregroundStyle(Palette.fg)
                 Spacer()
                 Text("\(Int(pas.rounded())) pt par application").font(.system(size: 11.5)).monospacedDigit().foregroundStyle(Palette.muted)
             }
             HStack(spacing: 8) {
                 Text("Vif").font(.system(size: 11)).foregroundStyle(Palette.muted)
                 // Le curseur va de « vif » (peu de chemin) à « posé » (beaucoup de chemin).
-                Slider(value: $pas, in: Mouse.carrouselPasPlage)
+                Slider(value: $pas, in: plage)
                 Text("Posé").font(.system(size: 11)).foregroundStyle(Palette.muted)
             }
-            Text("Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.")
+            Text(aide)
                 .font(.system(size: 11)).foregroundStyle(Palette.muted).fixedSize(horizontal: false, vertical: true)
         }
         .padding(.horizontal, 14).padding(.vertical, 10)

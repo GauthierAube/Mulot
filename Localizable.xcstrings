@@ -1,826 +1,832 @@
 {
-  "sourceLanguage": "fr",
-  "strings": {
-    "%@ · connectée": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · connected"
+  "sourceLanguage" : "fr",
+  "strings" : {
+    "%@ · connectée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · connected"
           }
         }
       }
     },
-    "%lld pt par application": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld pt per app"
+    "%lld pt par application" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld pt per app"
           }
         }
       }
     },
-    "Accès à la souris refusé (Surveillance de la saisie ?)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mouse access denied (Input Monitoring?)"
+    "Accès à la souris refusé (Surveillance de la saisie ?)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mouse access denied (Input Monitoring?)"
           }
         }
       }
     },
-    "Afficher le bureau": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show Desktop"
+    "Afficher le bureau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Desktop"
           }
         }
       }
     },
-    "Appuyer": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Press"
+    "Appuyer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press"
           }
         }
       }
     },
-    "Appuyer et glisser vers le bas": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Press and swipe down"
+    "Appuyer et glisser vers le bas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press and swipe down"
           }
         }
       }
     },
-    "Appuyer et glisser vers le haut": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Press and swipe up"
+    "Appuyer et glisser vers le haut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press and swipe up"
           }
         }
       }
     },
-    "Appuyer et glisser à droite": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Press and swipe right"
+    "Appuyer et glisser à droite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press and swipe right"
           }
         }
       }
     },
-    "Appuyer et glisser à gauche": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Press and swipe left"
+    "Appuyer et glisser à gauche" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press and swipe left"
           }
         }
       }
     },
-    "Au démarrage": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open at login"
+    "Au démarrage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open at login"
           }
         }
       }
     },
-    "Automatique (langue du Mac)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatic (Mac language)"
+    "Automatique (langue du Mac)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic (Mac language)"
           }
         }
       }
     },
-    "Automatique (par défaut)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatic (default)"
+    "Automatique (par défaut)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic (default)"
           }
         }
       }
     },
-    "Automatique, bascule difficile": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatic, hard switch"
+    "Automatique, bascule difficile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic, hard switch"
           }
         }
       }
     },
-    "Automatique, bascule facile": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatic, easy switch"
+    "Automatique, bascule facile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic, easy switch"
           }
         }
       }
     },
-    "Autorise Mulot dans Accessibilité": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Allow Mulot in Accessibility"
+    "Autorise Mulot dans Accessibilité" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow Mulot in Accessibility"
           }
         }
       }
     },
-    "Bouton Précédent": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back button"
+    "Bouton Précédent" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back button"
           }
         }
       }
     },
-    "Bouton Suivant": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Forward button"
+    "Bouton Suivant" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forward button"
           }
         }
       }
     },
-    "Bouton arrière": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back button"
+    "Bouton arrière" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back button"
           }
         }
       }
     },
-    "Bouton avant": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Forward button"
+    "Bouton avant" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forward button"
           }
         }
       }
     },
-    "Bouton de pouce": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thumb button"
+    "Bouton de pouce" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thumb button"
           }
         }
       }
     },
-    "Bouton de pouce : simple clic": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thumb button: single click"
+    "Bouton de pouce : simple clic" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thumb button: single click"
           }
         }
       }
     },
-    "Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "With the thumb button held: how far the mouse travels to move to the next app in Side."
+    "Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With the thumb button held: how far the mouse travels to move to the next app in Side."
           }
         }
       }
     },
-    "Bouton derrière la molette": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Button behind the wheel"
+    "Bouton de pouce tenu vers le tiroir : le chemin que fait la souris pour passer à l'application suivante du tiroir de Side." : {
+
+    },
+    "Bouton derrière la molette" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button behind the wheel"
           }
         }
       }
     },
-    "Boutons": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Buttons"
+    "Boutons" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buttons"
           }
         }
       }
     },
-    "Bureau ou écran de droite": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Desktop or Display on the Right"
+    "Bureau ou écran de droite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desktop or Display on the Right"
           }
         }
       }
     },
-    "Bureau ou écran de gauche": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Desktop or Display on the Left"
+    "Bureau ou écran de gauche" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desktop or Display on the Left"
           }
         }
       }
     },
-    "Capture d'écran (⌘⇧5)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Screenshot (⌘⇧5)"
+    "Capture d'écran (⌘⇧5)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screenshot (⌘⇧5)"
           }
         }
       }
     },
-    "Changer d'onglet": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Switch Tabs"
+    "Changer d'onglet" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch Tabs"
           }
         }
       }
     },
-    "Changer de bureau": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Switch Desktops"
+    "Changer de bureau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch Desktops"
           }
         }
       }
     },
-    "Clic de la molette": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wheel click"
+    "Clic de la molette" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wheel click"
           }
         }
       }
     },
-    "Clic du milieu": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Middle Click"
+    "Clic du milieu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Middle Click"
           }
         }
       }
     },
-    "Coller": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Paste"
+    "Coller" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste"
           }
         }
       }
     },
-    "Copier": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copy"
+    "Copier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy"
           }
         }
       }
     },
-    "Crans ↔ roue libre": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ratchet ↔ free-spin"
+    "Crans ↔ roue libre" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ratchet ↔ free-spin"
           }
         }
       }
     },
-    "Crans, roue libre si on la lance": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ratchet, free-spin when flicked"
+    "Crans, roue libre si on la lance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ratchet, free-spin when flicked"
           }
         }
       }
     },
-    "Défilement horizontal": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Horizontal Scrolling"
+    "Défilement horizontal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horizontal Scrolling"
           }
         }
       }
     },
-    "Envoyer la fenêtre à droite": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Move Window to the Right"
+    "Envoyer la fenêtre à droite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move Window to the Right"
           }
         }
       }
     },
-    "Envoyer la fenêtre à gauche": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Move Window to the Left"
+    "Envoyer la fenêtre à gauche" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move Window to the Left"
           }
         }
       }
     },
-    "Fenêtres de l'app": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Windows"
+    "Fenêtres de l'app" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Windows"
           }
         }
       }
     },
-    "Fermer l'onglet (⌘W)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Close Tab (⌘W)"
+    "Fermer l'onglet (⌘W)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close Tab (⌘W)"
           }
         }
       }
     },
-    "Geste vers la droite →": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gesture right →"
+    "Geste vers la droite →" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesture right →"
           }
         }
       }
     },
-    "Geste vers la gauche ←": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gesture left ←"
+    "Geste vers la gauche ←" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesture left ←"
           }
         }
       }
     },
-    "Geste vers le bas ↓": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gesture down ↓"
+    "Geste vers le bas ↓" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesture down ↓"
           }
         }
       }
     },
-    "Geste vers le haut ↑": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gesture up ↑"
+    "Geste vers le haut ↑" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesture up ↑"
           }
         }
       }
     },
-    "Grande molette": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Main wheel"
+    "Grande molette" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Main wheel"
           }
         }
       }
     },
-    "Impossible d'activer le bouton de pouce": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Can't enable the thumb button"
+    "Impossible d'activer le bouton de pouce" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can't enable the thumb button"
           }
         }
       }
     },
-    "La souris ne répond pas (Logi Options+ est-il fermé ?)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The mouse isn't responding (is Logi Options+ closed?)"
+    "La souris ne répond pas (Logi Options+ est-il fermé ?)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The mouse isn't responding (is Logi Options+ closed?)"
           }
         }
       }
     },
-    "Langue": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Language"
+    "Langue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
           }
         }
       }
     },
-    "Lecture / pause": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Play / Pause"
+    "Lecture / pause" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play / Pause"
           }
         }
       }
     },
-    "Les boutons gardent leur rôle d'origine, sans gestes.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Buttons keep their original function, without gestures."
+    "Les boutons gardent leur rôle d'origine, sans gestes." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buttons keep their original function, without gestures."
           }
         }
       }
     },
-    "Mission Control": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mission Control"
+    "Mission Control" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mission Control"
           }
         }
       }
     },
-    "Mode jeu : %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Game mode: %@"
+    "Mode jeu : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game mode: %@"
           }
         }
       }
     },
-    "Molette du pouce": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thumb wheel"
+    "Molette du pouce" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thumb wheel"
           }
         }
       }
     },
-    "Molettes": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wheels"
+    "Molettes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wheels"
           }
         }
       }
     },
-    "Mulot": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mulot"
+    "Mulot" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mulot"
           }
         }
       }
     },
-    "Mulot redémarre pour changer de langue.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mulot restarts to change its language."
+    "Mulot redémarre pour changer de langue." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mulot restarts to change its language."
           }
         }
       }
     },
-    "Page précédente (⌘[)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Previous Page (⌘[)"
+    "Page précédente (⌘[)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous Page (⌘[)"
           }
         }
       }
     },
-    "Page suivante (⌘])": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Next Page (⌘])"
+    "Page suivante (⌘])" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Page (⌘])"
           }
         }
       }
     },
-    "Par défaut": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Default"
+    "Par défaut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default"
           }
         }
       }
     },
-    "Posé": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calm"
+    "Posé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calm"
           }
         }
       }
     },
-    "Quitter": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quit"
+    "Quitter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit"
           }
         }
       }
     },
-    "Reconnecter": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reconnect"
+    "Reconnecter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reconnect"
           }
         }
       }
     },
-    "Rien": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nothing"
+    "Rien" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing"
           }
         }
       }
     },
-    "Roue libre dès qu'on la lance": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Free-spin as soon as it's flicked"
+    "Roue libre dès qu'on la lance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free-spin as soon as it's flicked"
           }
         }
       }
     },
-    "Roue libre seulement si on la lance fort": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Free-spin only when flicked hard"
+    "Roue libre seulement si on la lance fort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free-spin only when flicked hard"
           }
         }
       }
     },
-    "Sensibilité du carrousel": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Carousel sensitivity"
+    "Sensibilité du carrousel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carousel sensitivity"
           }
         }
       }
+    },
+    "Sensibilité du sélecteur du tiroir" : {
+
     },
-    "Side : afficher la grille": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Side: Show Grid"
+    "Side : afficher la grille" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side: Show Grid"
           }
         }
       }
     },
-    "Side : afficher le Finder": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Side: Show Finder"
+    "Side : afficher le Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side: Show Finder"
           }
         }
       }
     },
-    "Side : afficher le panneau du bas": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Side: Show Drawer"
+    "Side : afficher le panneau du bas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side: Show Drawer"
           }
         }
       }
     },
-    "Side : agrandir la fenêtre": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Side: Fill the Screen"
+    "Side : agrandir la fenêtre" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side: Fill the Screen"
           }
         }
       }
     },
-    "Side : application précédente": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Side: Previous App"
+    "Side : application précédente" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side: Previous App"
           }
         }
       }
     },
-    "Side : application suivante": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Side: Next App"
+    "Side : application suivante" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side: Next App"
           }
         }
       }
     },
-    "Side : changer d'application": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Side: Switch Apps"
+    "Side : changer d'application" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side: Switch Apps"
           }
         }
       }
     },
-    "Souris non détectée": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mouse not detected"
+    "Souris non détectée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mouse not detected"
           }
         }
       }
     },
-    "Spotlight": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spotlight"
+    "Spotlight" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotlight"
           }
         }
       }
     },
-    "Toujours en roue libre": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Always free-spin"
+    "Toujours en roue libre" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always free-spin"
           }
         }
       }
     },
-    "Toujours à crans": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Always ratchet"
+    "Toujours à crans" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always ratchet"
           }
         }
       }
     },
-    "Toutes les apps": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All Apps"
+    "Toutes les apps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Apps"
           }
         }
       }
     },
-    "Vif": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quick"
+    "Vif" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick"
           }
         }
       }
     },
-    "Volume": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volume"
+    "Volume" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume"
           }
         }
       }
     },
-    "Zoom (⌘+ / ⌘−)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoom (⌘+ / ⌘−)"
+    "Zoom (⌘+ / ⌘−)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom (⌘+ / ⌘−)"
           }
         }
       }
     },
-    "un jeu": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "a game"
+    "un jeu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a game"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

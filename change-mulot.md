@@ -3,9 +3,13 @@
 Une petite app Mac, dans la barre des menus, qui remplace Logi Options+ pour les souris Logitech MX Master en Bluetooth (testée avec la MX Master 3S). Elle règle les boutons et les gestes du pouce, sans compte ni logiciel Logitech. Les dernières modifications sont en haut.
 
 
+## 16 novembre 2026 : gestes du pouce sans attendre le relâchement
+- Les gestes du bouton de pouce partent dès que la souris a fait 28 points dans une direction, bouton encore tenu. Avant, rien ne se passait avant de lâcher le bouton : le Finder ou le tiroir de Side s'ouvraient avec un temps de retard, et un geste un peu court passait pour un clic.
+- Geste vers le tiroir de Side : le tiroir s'ouvre tout de suite ; en continuant 50 points de plus, son sélecteur vertical apparaît. Tiroir déjà ouvert et geste court : il se referme, comme avant.
+- Nouveau réglage « Sensibilité du sélecteur du tiroir » (40 à 300 points par application, 90 au départ), à part de celle du carrousel horizontal : l'écran est moins haut que large.
+
 ## 16 novembre 2026 : le sélecteur du tiroir de Side
 - Quand un geste vertical du bouton de pouce est réglé sur « Side : afficher le tiroir », tenir le bouton et continuer dans ce sens (90 points) ouvre le tiroir et affiche son sélecteur vertical d'applications, comme le geste à quatre doigts du trackpad. Il suit la souris ; au relâchement, l'application du centre prend la place. Un geste court ouvre ou ferme le tiroir, comme avant.
-- Le curseur « Sensibilité du carrousel » règle aussi ce sélecteur.
 
 ## 13 novembre 2026 : sensibilité du carrousel
 - Quand un geste de côté du bouton de pouce mène le carrousel de Side (application suivante ou précédente), le panneau propose un curseur « Sensibilité du carrousel », de « Vif » à « Posé » : le chemin que fait la souris pour passer d'une application à la suivante (80 à 600 points, 150 au départ).

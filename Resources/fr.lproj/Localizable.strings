@@ -46,6 +46,8 @@
 	<string>Bouton de pouce : simple clic</string>
 	<key>Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.</key>
 	<string>Bouton de pouce tenu : le chemin que fait la souris pour passer à l'application suivante dans Side.</string>
+	<key>Bouton de pouce tenu vers le tiroir : le chemin que fait la souris pour passer à l'application suivante du tiroir de Side.</key>
+	<string>Bouton de pouce tenu vers le tiroir : le chemin que fait la souris pour passer à l'application suivante du tiroir de Side.</string>
 	<key>Bouton derrière la molette</key>
 	<string>Bouton derrière la molette</string>
 	<key>Boutons</key>
@@ -134,6 +136,8 @@
 	<string>Roue libre seulement si on la lance fort</string>
 	<key>Sensibilité du carrousel</key>
 	<string>Sensibilité du carrousel</string>
+	<key>Sensibilité du sélecteur du tiroir</key>
+	<string>Sensibilité du sélecteur du tiroir</string>
 	<key>Side : afficher la grille</key>
 	<string>Side : afficher la grille</string>
 	<key>Side : afficher le Finder</key>
